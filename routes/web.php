@@ -32,3 +32,5 @@ Route::get('/exam', function () {
 Route::get('/document', function () {
     return view('document');
 });
+
+Route::post('/admin/exam', [App\Http\Controllers\ExamController::class, 'store'])->name('exam.store');
