@@ -171,6 +171,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary btn-lg btn-block">Add Document</button>
+                        </form>
                     </div>
                 </div>
             </div>
