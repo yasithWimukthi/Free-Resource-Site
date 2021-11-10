@@ -153,7 +153,7 @@
                                 <textarea class="form-control" id="description" name="description" rows="3"></textarea>
                             </div>
 
-                            <select class="custom-select custom-select-lg mb-3">
+                            <select class="custom-select custom-select-lg mb-3" name="awarding_body">
                                 <option selected>Select Awarding Body</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -165,6 +165,7 @@
                                 <label class="custom-file-label" for="image">Choose image</label>
                             </div>
                             <button type="submit" class="btn btn-primary btn-lg btn-block">Add Course</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -206,6 +207,7 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Description</th>
+                                    <th>Awarding Body</th>
                                     <th>Update</th>
                                     <th>Delete</th>
                                 </tr>
