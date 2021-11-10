@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class DocumentController extends Controller
 {
+
+    public function index(){
+        $documents = Document::all();
+        return view('document',['documents'=>$documents]);
+    }
+
     public function store(Request $request){
         $inputs = request()->validate([
             'name' => 'required',

@@ -153,6 +153,7 @@
                                 <textarea class="form-control" id="description" name="description" rows="3"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary btn-lg btn-block">Add Awarding Body</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -218,6 +219,38 @@
                 </div>
             </div>
         </div>
+
+{{--        update modal--}}
+        <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Update Course</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post">
+                            <div class="form-group">
+                                <label for="update-name">Name</label>
+                                <input type="text" class="form-control" id="update-name" name="name" placeholder="Enter name">
+                            </div>
+                            <div class="form-group">
+                                <label for="update-description">Awarding Body Description</label>
+                                <textarea class="form-control" id="update-description" name="description" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Add Awarding Body</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <footer class="bg-white sticky-footer">
             <div class="container my-auto">
                 <div class="text-center my-auto copyright"><span>Copyright © Brand 2021</span></div>

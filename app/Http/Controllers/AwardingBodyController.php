@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class AwardingBodyController extends Controller
 {
+
+    public function index(){
+        $awardingBodies = AwardingBody::all();
+        return view('awardingbody',['awardingbodies'=>$awardingBodies]);
+    }
+
     public function store(Request $request){
         $inputs = request()->validate([
             'name' => 'required',

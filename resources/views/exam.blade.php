@@ -166,6 +166,7 @@
                                 <label class="custom-file-label" for="image">Choose image</label>
                             </div>
                             <button type="submit" class="btn btn-primary btn-lg btn-block">Add Exam</button>
+                        </form>
                     </div>
                 </div>
             </div>

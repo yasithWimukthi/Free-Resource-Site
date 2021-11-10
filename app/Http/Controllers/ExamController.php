@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class ExamController extends Controller
 {
+
+    public function index(){
+        $exams = Exam::all();
+        return view('exam',['exams'=>$exams]);
+    }
+
     public function store(Request $request){
         $inputs = request()->validate([
             'name' => 'required',
