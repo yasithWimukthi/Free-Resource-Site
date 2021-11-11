@@ -34,3 +34,5 @@ Route::get('/document', function () {
 });
 
 Route::post('/admin/exam', [App\Http\Controllers\ExamController::class, 'store'])->name('exam.store');
+
+Route::post('/admin/awardingbody', [App\Http\Controllers\AwardingBodyController::class, 'store'])->name('awardingbody.store');

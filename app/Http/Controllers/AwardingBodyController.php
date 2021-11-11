@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AwardingBody;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AwardingBodyController extends Controller
 {
@@ -14,18 +15,29 @@ class AwardingBodyController extends Controller
     }
 
     public function store(Request $request){
-        $inputs = request()->validate([
+        $rules = [
             'name' => 'required',
             'description' => 'required',
-        ]);
+        ];
 
+        $validator = Validator::make($request->all(),$rules);
 
-        $awardingBody = new AwardingBody();
-        $awardingBody->name = $request->name;
-        $awardingBody->description = $request->description;
+        if ($validator->fails()) {
+            return redirect('/awarding-body')
+                ->withInput()
+                ->withErrors($validator);
+        }else{
+            $data = $request->input();
+            try{
+                $awardingBody = new AwardingBody();
+                $awardingBody->name = $data['name'];
+                $awardingBody->description = $data['description'];
+                $awardingBody->save();
 
-
-        $awardingBody->save();
+            }catch (Exception $e){
+                return redirect('/awarding-body')->with('failed',"operation failed");
+            }
+        }
 
         return back();
     }

@@ -143,7 +143,8 @@
                     <div class="card-body">
 
 {{--                        add awarding body form--}}
-                        <form method="post">
+                        <form method="post" action="{{route('awardingbody.store')}}">
+                            @csrf
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
