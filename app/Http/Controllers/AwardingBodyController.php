@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AwardingBody;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class AwardingBodyController extends Controller
@@ -40,5 +41,18 @@ class AwardingBodyController extends Controller
         }
 
         return back();
+    }
+
+    public function edit(Request $request,$id){
+        $name = $request->input('name');
+        DB::update('update awarding_bodies set name = ? where id = ?',[$name,$id]);
+        $awardingBodies = AwardingBody::all();
+        return view('awardingbody',['awardingbodies'=>$awardingBodies]);
+    }
+
+    public function remove($id){
+        DB::update('DELETE FROM awarding_bodies WHERE id= ?',[$id]);
+        $awardingBodies = AwardingBody::all();
+        return view('awardingbody',['awardingbodies'=>$awardingBodies]);
     }
 }
