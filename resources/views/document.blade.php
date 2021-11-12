@@ -20,10 +20,11 @@
             </a>
             <hr class="sidebar-divider my-0">
             <ul class="nav navbar-nav text-light" id="accordionSidebar">
-                <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span>Profile</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="table.html"><i class="fas fa-table"></i><span>Table</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Login</span></a></li>
+                <li class="nav-item"><a class="nav-link active" href="/"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="/awarding-body"><i class="fas fa-user"></i><span>Awarding Body</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('course.index')}}"><i class="fas fa-user"></i><span>Courses</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="/exam"><i class="fas fa-table"></i><span>Exams</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="/document"><i class="far fa-user-circle"></i><span>Documents</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-circle"></i><span>Register</span></a></li>
             </ul>
             <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
@@ -144,6 +145,7 @@
 
                         {{--                        add course form--}}
                         <form method="post">
+                            @csrf
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Enter document name">

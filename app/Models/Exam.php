@@ -9,5 +9,11 @@ class Exam extends Model
 {
     use HasFactory;
 
+    protected $table = 'exams';
+    public $timestamps = true;
+    protected $guarded = [];
 
+    public function awardingBody(){
+        return $this->belongsTo(AwardingBody::class);
+    }
 }
