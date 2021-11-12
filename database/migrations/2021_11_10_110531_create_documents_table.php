@@ -15,6 +15,11 @@ class CreateDocumentsTable extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('awarding_body_id')->constrained()->onDelete('cascade');
+            $table->text('name');
+            $table->text('description');
+            $table->text('image');
+            $table->text('document');
             $table->timestamps();
         });
     }

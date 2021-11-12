@@ -15,6 +15,10 @@ class CreateExamsTable extends Migration
     {
         Schema::create('exams', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('awarding_body_id')->constrained()->onDelete('cascade');
+            $table->text('name');
+            $table->text('description');
+            $table->text('image');
             $table->timestamps();
         });
     }

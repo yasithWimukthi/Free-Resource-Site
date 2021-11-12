@@ -11,4 +11,20 @@ class AwardingBody extends Model
     protected $table = 'awarding_bodies';
     public $timestamps = true;
     protected $guarded = [];
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
+
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
+    }
+
+    public function exams()
+    {
+        return $this->hasMany(Exam::class);
+    }
+
 }

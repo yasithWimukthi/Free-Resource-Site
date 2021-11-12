@@ -247,6 +247,7 @@
                     </div>
                     <div class="modal-body">
                         <form method="post">
+                            @csrf
                             <div class="form-group">
                                 <label for="update-name">Name</label>
                                 <input type="text" class="form-control" id="update-name" name="name" placeholder="Enter course name">
