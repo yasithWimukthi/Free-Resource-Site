@@ -29,7 +29,7 @@ class CourseController extends Controller
         $validator = Validator::make($request->all(),$rules);
 
         if ($validator->fails()) {
-            return redirect('/exam')
+            return redirect('/course')
                 ->withInput()
                 ->withErrors($validator);
         }else{

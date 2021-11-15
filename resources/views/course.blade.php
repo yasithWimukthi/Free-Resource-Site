@@ -197,15 +197,15 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    @foreach($courses as $course)
-                                    <td> <img class="rounded-circle mr-2" width="30" height="30" src="storage/{{$course->image}}">{{$course->name}}</td>
-                                    <td>{{$course->description}}</td>
-                                    <td>{{$course->awardingBody->name}} </td>
-                                    <td><button type="button" class="btn btn-success">Update</button></td>
-                                    <td><button type="button" class="btn btn-danger">Delete</button></td>
-                                    @endforeach
-                                </tr>
+                                @foreach($courses as $course)
+                                    <tr>
+                                        <td> <img class="rounded-circle mr-2" width="30" height="30" src="storage/{{$course->image}}">{{$course->name}}</td>
+                                        <td>{{$course->description}}</td>
+                                        <td>{{$course->awardingBody->name}} </td>
+                                        <td><button type="button" class="btn btn-success">Update</button></td>
+                                        <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                                 <tfoot>
                                 <tr>

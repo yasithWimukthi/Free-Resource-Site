@@ -18,7 +18,7 @@ class DocumentController extends Controller
         $rules =[
             'name' => 'required',
             'description' => 'required',
-            'course' => 'required',
+            'awarding_body' => 'required',
             'image' => 'mimes:jpeg,png,jpg',
             'document' => 'required|file'
         ];
@@ -32,17 +32,29 @@ class DocumentController extends Controller
         }else{
             $data = $request->input();
             try{
+
+                $inputs = [];
+                if(request('image')){
+                    $inputs['image'] = request('image')->store('course images');
+                    request('image')->store('course images');
+                }
+                if (request('document')){
+                    $inputs['document'] = request('document')->store('documents');
+                    request('document')->store('documents');
+                }
+
                 $document = new Document();
                 $document->name = $data['name'];
                 $document->description = $data['description'];
-                $document->image = $data['image'];
-                $document->document = $data['document'];
-                $data['image']->store('document images');
-                $data['document']->store('documents');
+                $document->image = $inputs['image'];
+                $document->document = $inputs['document'];
+                $document->awarding_body_id = $data['awarding_body'];
+                //$data['image']->store('document images');
+                //$data['document']->store('documents');
 
                 $document->save();
             }catch(Exception $e){
-                return redirect('//document')->with('failed',"operation failed");
+                return redirect('/document')->with('failed',"operation failed");
             }
         }
 
