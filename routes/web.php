@@ -49,3 +49,7 @@ Route::post('/admin/awarding-body/update/{id}', [App\Http\Controllers\AwardingBo
 Route::get('/admin/awarding-body/delete/{id}', [App\Http\Controllers\AwardingBodyController::class, 'remove'])->name('awardingbody.remove');
 
 Route::post('/admin/course', [App\Http\Controllers\CourseController::class, 'store'])->name('course.store');
+
+//Route::get('getCourses/{id}', 'CategoryController@get_causes_against_category');
+
+Route::get('getCourses/{id}', [App\Http\Controllers\CourseController::class, 'getCoursesByAwardingId']);
