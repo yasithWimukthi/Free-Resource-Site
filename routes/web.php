@@ -28,14 +28,15 @@ Route::get('/awarding-body', [App\Http\Controllers\AwardingBodyController::class
 //});
 
 Route::get('/course', [App\Http\Controllers\CourseController::class, 'index'])->name('course.index');
+Route::get('/document', [App\Http\Controllers\DocumentController::class, 'index'])->name('document.index');
 
 Route::get('/exam', function () {
     return view('exam');
 });
 
-Route::get('/document', function () {
-    return view('document');
-});
+//Route::get('/document', function () {
+//    return view('document');
+//});
 
 Route::post('/admin/exam', [App\Http\Controllers\ExamController::class, 'store'])->name('exam.store');
 Route::post('/admin/document', [App\Http\Controllers\DocumentController::class, 'store'])->name('document.store');
