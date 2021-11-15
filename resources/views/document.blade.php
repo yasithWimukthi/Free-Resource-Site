@@ -144,7 +144,7 @@
                     <div class="card-body">
 
                         {{--                        add course form--}}
-                        <form method="post">
+                        <form method="post" action="{{route('document.store')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="name">Name</label>
@@ -155,7 +155,7 @@
                                 <textarea class="form-control" id="description" name="description" rows="3"></textarea>
                             </div>
 
-                            <select class="custom-select custom-select-lg mb-3">
+                            <select class="custom-select custom-select-lg mb-3" name="awarding_body">
                                 <option selected>Select Course</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
