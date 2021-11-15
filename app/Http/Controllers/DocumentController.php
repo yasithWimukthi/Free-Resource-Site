@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AwardingBody;
+use App\Models\Course;
 use App\Models\Document;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -11,7 +13,8 @@ class DocumentController extends Controller
 
     public function index(){
         $documents = Document::all();
-        return view('document',['documents'=>$documents]);
+        $awardingBody = AwardingBody::all();
+        return view('document',['documents'=>$documents,'awardingBodies' => $awardingBody]);
     }
 
     public function store(Request $request){
