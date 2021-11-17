@@ -6,8 +6,10 @@ use App\Models\AwardingBody;
 use App\Models\Course;
 use App\Models\Exam;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use PDOException;
+use Symfony\Component\Console\Input\Input;
 
 class CourseController extends Controller
 {
@@ -66,5 +68,15 @@ class CourseController extends Controller
 //        $course->save();
 
         return back();
+    }
+
+    function getCoursesByAwardingId(Request $request){
+//        $ids= Input::all();
+//        $data = DB::table('courses')->whereIn('awarding_body_id',$ids)->get();
+//        $ids = Input::get('option');
+//        $data = DB::table('courses')->whereIn('awarding_body_id',$ids)->get();
+       $data = DB::table('courses')->whereIn('awarding_body_id',[$request->id])->get();
+        echo json_encode($data);
+        exit;
     }
 }
