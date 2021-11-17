@@ -1,32 +1,46 @@
 $(document).ready(function() {
-    $(document).on('click', '.awarding-body-check-box', function () {
+    $(document).on('change', '.awarding-body-check-box', function () {
 
-        // var ids = [];
-        //
-        // $('.awarding-body-check-box').each(function () {
-        //     if ($(this).is(":checked")) {
-        //         ids.push($(this).attr('id'));
-        //         $('#catFilters').append(`<div class="alert fade show alert-color _add-secon" role="alert"> ${$(this).attr('attr-name')}<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> </div>`);
-        //         counter++;
-        //     }
-        // });
-        //
+        var awardingBodyIds = [];
+
+        $('.awarding-body-check-box').each(function () {
+            if ($(this).is(":checked")) {
+                awardingBodyIds.push($(this).attr('name'));
+                // $('#catFilters').append(`<div class="alert fade show alert-color _add-secon" role="alert"> ${$(this).attr('attr-name')}<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> </div>`);
+            }else{
+                var removeIndex = awardingBodyIds.indexOf($(this).attr('name'));
+                // awardingBodyIds = jQuery.grep(awardingBodyIds, function(value) {
+                //     return value != removeIndex;
+                // });
+
+                awardingBodyIds = awardingBodyIds.filter(function(elem){
+                    return elem != removeIndex;
+                });
+
+            }
+        });
+
         // $('._t-item').text('(' + ids.length + ' items)');
-        //
+
         // if (counter == 0) {
         //     $('.causes_div').empty();
         //     $('.causes_div').append('No Data Found');
         // } else {
         //     fetchCauseAgainstCategory(ids);
         // }
-
-        getCoursesByAwardingId([8])
+        console.log(awardingBodyIds)
+        getCoursesByAwardingId(awardingBodyIds)
     });
 });
 
 
 
 function getCoursesByAwardingId(id){
+
+    $('.right-container').empty();
+
+    // $serializeArray = serialize(id)
+
     $.ajax({
         type: 'GET',
         url: 'getCourses/' + id,

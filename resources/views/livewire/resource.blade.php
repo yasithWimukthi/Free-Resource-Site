@@ -19,7 +19,7 @@
                                             class="form-check-input custom-control-input awarding-body-check-box"
                                             type="checkbox"
                                             id="{{$awardingBody->name}}-check-box"
-                                            name="{{$awardingBody->name}}"
+                                            name="{{$awardingBody->id}}"
                                             @click="selectAwardingBody({{$awardingBody->id}})" >
                                         <label class="form-check-label custom-control-label" for="{{$awardingBody->name}}-check-box">{{$awardingBody->name}}</label>
                                     </div>
@@ -33,7 +33,7 @@
                                     @foreach($awardingbodies as $awardingBody)
                                         <div class="form-check custom-control custom-checkbox mb-3">
                                             <input
-                                                class="form-check-input custom-control-input awarding-body-check-box"
+                                                class="form-check-input custom-control-input course-check-box"
                                                 type="checkbox"
                                                 id="{{$awardingBody->name}}-check-box"
                                                 name="{{$awardingBody->name}}"
@@ -50,10 +50,10 @@
                                     @foreach($awardingbodies as $awardingBody)
                                         <div class="form-check custom-control custom-checkbox mb-3">
                                             <input
-                                                class="form-check-input custom-control-input awarding-body-check-box"
+                                                class="form-check-input custom-control-input resourse-check-box"
                                                 type="checkbox"
                                                 id="{{$awardingBody->name}}-check-box"
-                                                name="{{$awardingBody->name}}"
+                                                name="{{$awardingBody->id}}"
                                                 @click="selectAwardingBody({{$awardingBody->id}})" >
                                             <label class="form-check-label custom-control-label" for="{{$awardingBody->name}}-check-box">{{$awardingBody->name}}</label>
                                         </div>
