@@ -1,5 +1,27 @@
 <div>
-    <main class="d-flex flex-row" style="height: 100%;">
+
+    <nav class="navbar navbar-dark navbar-expand-md fixed-top bg-dark" style="background: rgb(255,255,255);">
+        <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav flex-grow-1 justify-content-between">
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-apple apple-logo"></i>&nbsp;</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Awarding Body</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Our Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Freebies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Enquiry Now</a></li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-search"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-heart"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-shopping-bag"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="d-flex flex-row" style="height: 100%;margin-top: 55px">
         <div style="width: 200px;height: 100%;">
             <div id="layoutSidenav">
                 <div id="layoutSidenav_nav">
