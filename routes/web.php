@@ -52,4 +52,6 @@ Route::post('/admin/course', [App\Http\Controllers\CourseController::class, 'sto
 
 //Route::get('getCourses/{id}', 'CategoryController@get_causes_against_category');
 
-Route::get('getCourses/{id}', [App\Http\Controllers\CourseController::class, 'getCoursesByAwardingId']);
+//Route::get('getCourses/{id}', [App\Http\Controllers\CourseController::class, 'getCoursesByAwardingId']);
+Route::get('/getCourses', [App\Http\Controllers\CourseController::class, 'getCoursesByAwardingId']);
+Route::get('/getCoursesById', [App\Http\Controllers\CourseController::class, 'getCoursesById']);
