@@ -72,7 +72,17 @@ class CourseController extends Controller
     }
 
     function getCoursesByAwardingId(Request $request){
-       $data = DB::table('courses')->whereIn('awarding_body_id',[$request->id])->get();
+        $input = $request->all();
+        \Log::info($input);
+        $data = DB::table('courses')->whereIn('awarding_body_id',$input['id'])->get();
+        echo json_encode($data);
+        exit;
+    }
+
+    function getCoursesById(Request $request){
+        $input = $request->all();
+        \Log::info($input);
+        $data = DB::table('courses')->whereIn('id',$input['id'])->get();
         echo json_encode($data);
         exit;
     }
