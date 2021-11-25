@@ -30,17 +30,15 @@
                                     <div class="sb-sidenav-menu-heading"><span>Courses</span></div>
                                 </div>
                                 <div class="container">
-                                    @foreach($awardingbodies as $awardingBody)
                                         <div class="form-check custom-control custom-checkbox mb-3">
                                             <input
                                                 class="form-check-input custom-control-input course-check-box"
                                                 type="checkbox"
-                                                id="{{$awardingBody->name}}-check-box"
-                                                name="{{$awardingBody->name}}"
-                                                @click="selectAwardingBody({{$awardingBody->id}})" >
-                                            <label class="form-check-label custom-control-label" for="{{$awardingBody->name}}-check-box">{{$awardingBody->name}}</label>
+                                                id="course-check-box"
+                                                name="course-check-box"
+                                            >
+                                            <label class="form-check-label custom-control-label" for="course-check-box">Course 1</label>
                                         </div>
-                                    @endforeach
                                 </div>
 
                                 <div>

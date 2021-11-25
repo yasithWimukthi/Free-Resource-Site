@@ -75,6 +75,5 @@ class CourseController extends Controller
        $data = DB::table('courses')->whereIn('awarding_body_id',[$request->id])->get();
         echo json_encode($data);
         exit;
-
     }
 }
