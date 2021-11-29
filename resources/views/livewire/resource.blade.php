@@ -69,7 +69,7 @@
                                 <div class="container">
                                         <div class="form-check custom-control custom-checkbox mb-3">
                                             <input
-                                                class="form-check-input custom-control-input resource-check-box"
+                                                class="form-check-input custom-control-input resource-check-box exam-check-box"
                                                 type="checkbox"
                                                 id="exam-check-box"
                                                 name="exam"
@@ -78,7 +78,7 @@
                                         </div>
                                         <div class="form-check custom-control custom-checkbox mb-3">
                                             <input
-                                                class="form-check-input custom-control-input resource-check-box"
+                                                class="form-check-input custom-control-input resource-check-box document-check-box"
                                                 type="checkbox"
                                                 id="document-check-box"
                                                 name="document"

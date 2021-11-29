@@ -6,6 +6,7 @@ use App\Models\AwardingBody;
 use App\Models\Course;
 use App\Models\Document;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class DocumentController extends Controller
@@ -62,6 +63,14 @@ class DocumentController extends Controller
         }
 
         return back();
+    }
+
+    function getDocumentByAwardingId(Request $request){
+        $input = $request->all();
+        \Log::info($input);
+        $data = DB::table('documents')->whereIn('awarding_body_id',$input['id'])->get();
+        echo json_encode($data);
+        exit;
     }
 
 
