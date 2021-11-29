@@ -152,7 +152,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="description">Document Description</label>
-                                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                                <textarea class="form-control" id="description" name="description" placeholder="Enter document description"rows="3"></textarea>
                             </div>
 
                             <select class="custom-select custom-select-lg mb-3" name="awarding_body">

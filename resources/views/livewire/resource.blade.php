@@ -52,15 +52,7 @@
                                     <div class="sb-sidenav-menu-heading"><span>Courses</span></div>
                                 </div>
                                 <div class="container course-container" >
-{{--                                        <div class="form-check custom-control custom-checkbox mb-3">--}}
-{{--                                            <input--}}
-{{--                                                class="form-check-input custom-control-input course-check-box"--}}
-{{--                                                type="checkbox"--}}
-{{--                                                id="course-check-box"--}}
-{{--                                                name="course-check-box"--}}
-{{--                                            >--}}
-{{--                                            <label class="form-check-label custom-control-label" for="course-check-box">Course 1</label>--}}
-{{--                                        </div>--}}
+                                        {{--course status--}}
                                 </div>
 
                                 <div>
@@ -88,9 +80,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="sb-sidenav-footer">
-                            <div class="small"><span>Logged as : </span></div>
-                        </div>
+                            {{--loggin status--}}
                     </div>
                 </div>
                 <div id="layoutSidenav_content">

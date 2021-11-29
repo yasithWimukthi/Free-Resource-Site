@@ -153,7 +153,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="description">Awarding Body Description</label>
-                                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                                <textarea class="form-control" id="description" name="description" placeholder="Enter Description" rows="3"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary btn-lg btn-block">Add Awarding Body</button>
                         </form>
