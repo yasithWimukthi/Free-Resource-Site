@@ -77,6 +77,9 @@ function getCoursesByAwardingId(id){
 $(document).ready(function() {
     $(document).on('change', '.course-check-box', function () {
 
+        $( ".exam-check-box" ).prop( "checked", false );
+        $( ".document-check-box" ).prop( "checked", false );
+
         var courseIds = [];
 
         $('.course-check-box').each(function () {
@@ -133,7 +136,11 @@ function getCoursesByCourseId(id){
  */
 $(document).ready(function() {
     $(document).on('change', '.exam-check-box', function () {
+        $( ".document-check-box" ).prop( "checked", false );
+        $( ".course-check-box" ).prop( "checked", false );
+
         var awardingBodies = [];
+
 
         $('.awarding-body-check-box').each(function () {
             if ($(this).is(":checked")) {
@@ -189,6 +196,10 @@ function getExamsByAwardingId(id){
  */
 $(document).ready(function() {
     $(document).on('change', '.document-check-box', function () {
+
+        $( ".exam-check-box" ).prop( "checked", false );
+        $( ".course-check-box" ).prop( "checked", false );
+
         var awardingBodies = [];
 
         $('.awarding-body-check-box').each(function () {
@@ -229,7 +240,7 @@ function getDocumentsByAwardingId(id){
                 <img class="card-img-top" src="storage/${element.image }" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title border-bottom pb-3">${element.name }  <a href="#" class="float-right d-inline-flex share"><i class="fas fa-share-alt text-primary"></i></a></h5>
-                    <button type="button" class="btn btn-primary">View Now</button>
+                    <a class="btn btn-primary" href="storage/${element.document}" target="_BLANK">View Now</a>
                 </div>
             </div>`);
 
