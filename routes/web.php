@@ -20,6 +20,10 @@ Route::get('/admin', function () {
 
 Route::get('/', Resource::class);
 
+Route::get('/home', function () {
+    return view('home');
+});
+
 
 Route::get('/awarding-body', [App\Http\Controllers\AwardingBodyController::class, 'index'])->name('awardingbody.index');
 Route::get('/exam', [App\Http\Controllers\ExamController::class, 'index'])->name('exam.index');
