@@ -53,9 +53,6 @@ class DocumentController extends Controller
                 $document->image = $inputs['image'];
                 $document->document = $inputs['document'];
                 $document->awarding_body_id = $data['awarding_body'];
-                //$data['image']->store('document images');
-                //$data['document']->store('documents');
-
                 $document->save();
             }catch(Exception $e){
                 return redirect('/document')->with('failed',"operation failed");

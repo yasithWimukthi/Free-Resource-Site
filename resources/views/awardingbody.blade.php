@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href=" {{asset('assets/fonts/fontawesome-all.min.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 </head>
 
 <body id="page-top">
@@ -137,30 +138,43 @@
                 </div>
             </nav>
             <div class="container-fluid">
-                <h3 class="text-dark mb-4">Awarding Body</h3>
-                <div class="card shadow">
-                    <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Add Awarding Body</p>
-                    </div>
-                    <div class="card-body">
+                <button type="button" class="btn btn-primary btn-lg" style="float: right; margin-bottom: 20px" data-bs-toggle="modal" data-bs-target="#addAwardingBodyModal">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add Awarding body
+                </button>
 
-{{--                        add awarding body form--}}
-                        <form method="post" action="{{route('awardingbody.store')}}">
-                            @csrf
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+                <!-- Modal -->
+                <div class="modal fade" id="addAwardingBodyModal" tabindex="-1" aria-labelledby="addAwardingBodyModalLabel" aria-hidden="true" >
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add Awarding Body</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="form-group">
-                                <label for="description">Awarding Body Description</label>
-                                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                            <div class="modal-body">
+                                <form method="post" action="{{route('awardingbody.store')}}">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description">Awarding Body Description</label>
+                                        <textarea class="form-control" id="description" name="description" placeholder="Enter Description" rows="3"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block"> Add Awarding Body </button>
+
+                                </form>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">Add Awarding Body</button>
-                        </form>
+{{--                            <div class="modal-footer">--}}
+{{--                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>--}}
+{{--                                <button type="button" class="btn btn-primary">Save changes</button>--}}
+{{--                            </div>--}}
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="container-fluid">
+
+            <div class="container-fluid" style="clear: both; ">
                 <div class="card shadow">
                     <div class="card-header py-3">
                         <p class="text-primary m-0 font-weight-bold">Awarding Body List</p>

@@ -5,7 +5,8 @@
 
 $(document).ready(function() {
     $(document).on('change', '.awarding-body-check-box', function () {
-
+        $( ".exam-check-box" ).prop( "checked", false );
+        $( ".document-check-box" ).prop( "checked", false );
         var awardingBodyIds = [];
 
         $('.awarding-body-check-box').each(function () {
@@ -48,7 +49,7 @@ function getCoursesByAwardingId(id){
                 <img class="card-img-top" src="storage/${element.image }" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title border-bottom pb-3">${element.name }  <a href="#" class="float-right d-inline-flex share"><i class="fas fa-share-alt text-primary"></i></a></h5>
-                    <button type="button" class="btn btn-primary">View Now</button>
+                    <button type="button" class="btn btn-primary mx-auto">Start Now</button>
                 </div>
             </div>`);
 
@@ -120,7 +121,7 @@ function getCoursesByCourseId(id){
                 <img class="card-img-top" src="storage/${element.image }" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title border-bottom pb-3">${element.name }  <a href="#" class="float-right d-inline-flex share"><i class="fas fa-share-alt text-primary"></i></a></h5>
-                    <button type="button" class="btn btn-primary">View Now</button>
+                    <button type="button" class="btn btn-primary">Start Now</button>
                 </div>
             </div>`);
 
@@ -180,7 +181,7 @@ function getExamsByAwardingId(id){
                 <img class="card-img-top" src="storage/${element.image }" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title border-bottom pb-3">${element.name }  <a href="#" class="float-right d-inline-flex share"><i class="fas fa-share-alt text-primary"></i></a></h5>
-                    <button type="button" class="btn btn-primary">View Now</button>
+                    <button type="button" class="btn btn-primary">Start Now</button>
                 </div>
             </div>`);
 
