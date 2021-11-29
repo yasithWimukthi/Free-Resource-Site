@@ -97,6 +97,7 @@ $(document).ready(function() {
     });
 });
 
+
 function getCoursesByCourseId(id){
     $('.right-container').empty();
 
@@ -125,3 +126,116 @@ function getCoursesByCourseId(id){
         }
     });
 }
+
+/**
+ * send a ajax request when user click on the exam checkbox
+ * exams are filtered according to the selected awarding body in the left side navigation bar
+ */
+$(document).ready(function() {
+    $(document).on('change', '.exam-check-box', function () {
+        var awardingBodies = [];
+
+        $('.awarding-body-check-box').each(function () {
+            if ($(this).is(":checked")) {
+                awardingBodies.push($(this).attr('name'));
+            }else{
+                var removeIndex = awardingBodies.indexOf($(this).attr('name'));
+
+                awardingBodies = awardingBodies.filter(function(elem){
+                    return elem != removeIndex;
+                });
+
+            }
+        });
+
+        getExamsByAwardingId(awardingBodies);
+
+    });
+});
+
+function getExamsByAwardingId(id){
+
+    $('.right-container').empty();
+
+    $.ajax({
+        type: 'GET',
+        url: '/getExams',
+        data:{id:id},
+        success: function (response) {
+            var response = JSON.parse(response);
+            console.log(response);
+
+            if (response.length == 0) {
+                $('.right-container').append('No Data Found');
+            } else {
+                response.forEach(element => {
+                    $('.right-container').append(`<div class="card" style="width: 300px; height: 350px; margin: 10px; border: 1px solid #ccc">
+                <img class="card-img-top" src="storage/${element.image }" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title border-bottom pb-3">${element.name }  <a href="#" class="float-right d-inline-flex share"><i class="fas fa-share-alt text-primary"></i></a></h5>
+                    <button type="button" class="btn btn-primary">View Now</button>
+                </div>
+            </div>`);
+
+                });
+            }
+        }
+    });
+}
+
+/**
+ * send a ajax request when user click on the document checkbox
+ * documents are filtered according to the selected awarding body in the left side navigation bar
+ */
+$(document).ready(function() {
+    $(document).on('change', '.document-check-box', function () {
+        var awardingBodies = [];
+
+        $('.awarding-body-check-box').each(function () {
+            if ($(this).is(":checked")) {
+                awardingBodies.push($(this).attr('name'));
+            }else{
+                var removeIndex = awardingBodies.indexOf($(this).attr('name'));
+
+                awardingBodies = awardingBodies.filter(function(elem){
+                    return elem != removeIndex;
+                });
+
+            }
+        });
+
+        getDocumentsByAwardingId(awardingBodies);
+
+    });
+});
+
+function getDocumentsByAwardingId(id){
+
+    $('.right-container').empty();
+
+    $.ajax({
+        type: 'GET',
+        url: '/getDocuments',
+        data:{id:id},
+        success: function (response) {
+            var response = JSON.parse(response);
+            console.log(response);
+
+            if (response.length == 0) {
+                $('.right-container').append('No Data Found');
+            } else {
+                response.forEach(element => {
+                    $('.right-container').append(`<div class="card" style="width: 300px; height: 350px; margin: 10px; border: 1px solid #ccc">
+                <img class="card-img-top" src="storage/${element.image }" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title border-bottom pb-3">${element.name }  <a href="#" class="float-right d-inline-flex share"><i class="fas fa-share-alt text-primary"></i></a></h5>
+                    <button type="button" class="btn btn-primary">View Now</button>
+                </div>
+            </div>`);
+
+                });
+            }
+        }
+    });
+}
+

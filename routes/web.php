@@ -22,14 +22,12 @@ Route::get('/', Resource::class);
 
 
 Route::get('/awarding-body', [App\Http\Controllers\AwardingBodyController::class, 'index'])->name('awardingbody.index');
+Route::get('/exam', [App\Http\Controllers\ExamController::class, 'index'])->name('exam.index');
 
 
 Route::get('/course', [App\Http\Controllers\CourseController::class, 'index'])->name('course.index');
 Route::get('/document', [App\Http\Controllers\DocumentController::class, 'index'])->name('document.index');
 
-Route::get('/exam', function () {
-    return view('exam');
-});
 
 Route::post('/admin/exam', [App\Http\Controllers\ExamController::class, 'store'])->name('exam.store');
 Route::post('/admin/document', [App\Http\Controllers\DocumentController::class, 'store'])->name('document.store');
@@ -42,3 +40,5 @@ Route::post('/admin/course', [App\Http\Controllers\CourseController::class, 'sto
 
 Route::get('/getCourses', [App\Http\Controllers\CourseController::class, 'getCoursesByAwardingId']);
 Route::get('/getCoursesById', [App\Http\Controllers\CourseController::class, 'getCoursesById']);
+Route::get('/getExams', [App\Http\Controllers\ExamController::class, 'getExamByAwardingId']);
+Route::get('/getDocuments', [App\Http\Controllers\DocumentController::class, 'getDocumentByAwardingId']);

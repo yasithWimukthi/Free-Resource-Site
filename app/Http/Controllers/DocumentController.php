@@ -6,6 +6,7 @@ use App\Models\AwardingBody;
 use App\Models\Course;
 use App\Models\Document;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class DocumentController extends Controller
@@ -61,21 +62,16 @@ class DocumentController extends Controller
             }
         }
 
-
-//        if(request('image')){
-//            $inputs['image'] = request('image')->store('document images');
-//            $inputs['document'] = request('document')->store('documents');
-//        }
-//
-//        $document = new Document();
-//        $document->name = $request->name;
-//        $document->description = $request->description;
-//        $document->course = $request->course;
-//        $document->image = $inputs['image'];
-//        $document->document = $inputs['document'];
-//
-//        $document->save();
-
         return back();
     }
+
+    function getDocumentByAwardingId(Request $request){
+        $input = $request->all();
+        \Log::info($input);
+        $data = DB::table('documents')->whereIn('awarding_body_id',$input['id'])->get();
+        echo json_encode($data);
+        exit;
+    }
+
+
 }

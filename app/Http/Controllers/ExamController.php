@@ -2,37 +2,67 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AwardingBody;
 use App\Models\Exam;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class ExamController extends Controller
 {
 
     public function index(){
         $exams = Exam::all();
-        return view('exam',['exams'=>$exams]);
+        $awardingBody = AwardingBody::all();
+        return view('exam',['exams'=>$exams,'awardingBodies' => $awardingBody]);
     }
 
     public function store(Request $request){
-        $inputs = request()->validate([
+        $rules = [
             'name' => 'required',
             'description' => 'required',
-            'course' => 'required',
-            'image' => 'mimes:jpeg,png,jpg'
-        ]);
+            'awarding_body' => 'required',
+            'image' => 'mimes:jpeg,png,jpg',
+        ];
 
-        if(request('image')){
-            $inputs['image'] = request('image')->store('exam images');
+        $validator = Validator::make($request->all(),$rules);
+
+        if ($validator->fails()) {
+            return redirect('/exam')
+                ->withInput()
+                ->withErrors($validator);
+        }else{
+            $data = $request->input();
+            try{
+                $inputs = [];
+                if(request('image')){
+                    $inputs['image'] = request('image')->store('course images');
+                    request('image')->store('course images');
+                }
+
+                $exam = new Exam();
+                $exam->name = $data['name'];
+                $exam->description = $data['description'];
+                $exam->image = $inputs['image'];
+                $exam->awarding_body_id = $data['awarding_body'];
+                $exam->save();
+            }catch(Exception $e){
+                return redirect('/exam')->with('failed',"operation failed");
+            }
         }
 
-        $exam = new Exam();
-        $exam->name = $request->name;
-        $exam->description = $request->description;
-        $exam->course = $request->course;
-        $exam->image = $inputs['image'];
-
-        $exam->save();
+        if(request('image')){
+            $inputs['image'] = request('image')->store('course images');
+        }
 
         return back();
+    }
+
+    function getExamByAwardingId(Request $request){
+        $input = $request->all();
+        \Log::info($input);
+        $data = DB::table('exams')->whereIn('awarding_body_id',$input['id'])->get();
+        echo json_encode($data);
+        exit;
     }
 }

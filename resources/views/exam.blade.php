@@ -155,11 +155,11 @@
                                 <textarea class="form-control" id="description" name="description" rows="3"></textarea>
                             </div>
 
-                            <select name="course" class="custom-select custom-select-lg mb-3">
-                                <option selected>Select Course</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="custom-select custom-select-lg mb-3" name="awarding_body">
+                                <option selected>Select Awarding Body</option>
+                                @foreach($awardingBodies as $awardingBody)
+                                    <option value="{{$awardingBody->id}}">{{$awardingBody->name}}</option>
+                                @endforeach
                             </select>
 
                             <div class="custom-file mb-3">
@@ -191,25 +191,27 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Description</th>
-                                    <th>Course</th>
+                                    <th>Awarding Body</th>
                                     <th>Update</th>
                                     <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td> <img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar3.jpeg">Course name</td>
-                                    <td>Course description</td>
-                                    <td>Awarding body </td>
-                                    <td><button type="button" class="btn btn-success">Update</button></td>
-                                    <td><button type="button" class="btn btn-danger">Delete</button></td>
-                                </tr>
+                                @foreach($exams as $exam)
+                                    <tr>
+                                        <td> <img class="rounded-circle mr-2" width="30" height="30" src="storage/{{$exam->image}}">{{$exam->name}}</td>
+                                        <td>{{$exam->description}}</td>
+                                        <td>{{$exam->awardingBody->name}} </td>
+                                        <td><button type="button" class="btn btn-success">Update</button></td>
+                                        <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                                 <tfoot>
                                 <tr>
                                     <th>Name</th>
                                     <th>Description</th>
-                                    <th>Course</th>
+                                    <th>warding Body</th>
                                     <th>Update</th>
                                     <th>Delete</th>
                                 </tr>
