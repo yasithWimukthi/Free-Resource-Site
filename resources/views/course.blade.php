@@ -22,7 +22,7 @@
             </a>
             <hr class="sidebar-divider my-0">
             <ul class="nav navbar-nav text-light" id="accordionSidebar">
-                <li class="nav-item"><a class="nav-link active" href="/"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                <li class="nav-item"><a class="nav-link active" href="/admin"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="/awarding-body"><i class="fas fa-user"></i><span>Awarding Body</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="{{route('course.index')}}"><i class="fas fa-user"></i><span>Courses</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="/exam"><i class="fas fa-table"></i><span>Exams</span></a></li>
