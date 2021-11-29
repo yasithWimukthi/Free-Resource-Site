@@ -14,13 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/admin', function () {
-    return view('admin');
-});
+//Route::get('/admin', function () {
+//    return view('admin');
+//});
 
 Route::get('/', Resource::class);
 
+Route::get('/home', function () {
+    return view('home');
+});
 
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
 Route::get('/awarding-body', [App\Http\Controllers\AwardingBodyController::class, 'index'])->name('awardingbody.index');
 Route::get('/exam', [App\Http\Controllers\ExamController::class, 'index'])->name('exam.index');
 
