@@ -8,6 +8,7 @@
     <link rel="stylesheet" href=" {{asset('assets/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href=" {{asset('assets/fonts/fontawesome-all.min.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
 <body id="page-top">
@@ -136,42 +137,55 @@
                 </div>
             </nav>
             <div class="container-fluid">
-                <h3 class="text-dark mb-4">Exams</h3>
-                <div class="card shadow">
-                    <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Add Exam</p>
-                    </div>
-                    <div class="card-body">
 
-                        {{--                        add course form--}}
-                        <form method="post" action="{{route('exam.store')}}" enctype="multipart/form-data">
-                            @csrf
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter exam name">
-                            </div>
-                            <div class="form-group">
-                                <label for="description">Exam description</label>
-                                <textarea class="form-control" id="description" name="description" placeholder="Enter exam description" rows="3"></textarea>
-                            </div>
+                <button type="button" class="btn btn-primary btn-lg" style="float: right; margin-bottom: 20px" data-bs-toggle="modal" data-bs-target="#addExamModal">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add Exam
+                </button>
 
-                            <select class="custom-select custom-select-lg mb-3" name="awarding_body">
-                                <option selected>Select Awarding Body</option>
-                                @foreach($awardingBodies as $awardingBody)
-                                    <option value="{{$awardingBody->id}}">{{$awardingBody->name}}</option>
-                                @endforeach
-                            </select>
-
-                            <div class="custom-file mb-3">
-                                <input type="file" class="custom-file-input" name="image" id="image">
-                                <label class="custom-file-label" for="image">Choose image</label>
+                <!-- Modal -->
+                <div class="modal fade" id="addExamModal" tabindex="-1" aria-labelledby="addAwardingBodyModalLabel" aria-hidden="true" >
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add Awarding Body</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">Add Exam</button>
-                        </form>
+                            <div class="modal-body">
+                                {{--                        add exam form--}}
+                                <form method="post" action="{{route('exam.store')}}" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter exam name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description">Exam description</label>
+                                        <textarea class="form-control" id="description" name="description" placeholder="Enter exam description" rows="3"></textarea>
+                                    </div>
+
+                                    <select class="custom-select custom-select-lg mb-3" name="awarding_body">
+                                        <option selected>Select Awarding Body</option>
+                                        @foreach($awardingBodies as $awardingBody)
+                                            <option value="{{$awardingBody->id}}">{{$awardingBody->name}}</option>
+                                        @endforeach
+                                    </select>
+
+                                    <div class="custom-file mb-3">
+                                        <input type="file" class="custom-file-input" name="image" id="image">
+                                        <label class="custom-file-label" for="image">Choose image</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Add Exam</button>
+                                </form>
+                            </div>
+                            {{--                            <div class="modal-footer">--}}
+                            {{--                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>--}}
+                            {{--                                <button type="button" class="btn btn-primary">Save changes</button>--}}
+                            {{--                            </div>--}}
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="container-fluid">
+            <div class="container-fluid" style="clear: both;">
                 <div class="card shadow">
                     <div class="card-header py-3">
                         <p class="text-primary m-0 font-weight-bold">Exams List</p>
@@ -251,6 +265,7 @@
 <script src=" {{asset('assets/js/bs-init.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js "></script>
 <script src=" {{asset('assets/js/theme.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
 </html>
