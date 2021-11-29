@@ -61,21 +61,8 @@ class DocumentController extends Controller
             }
         }
 
-
-//        if(request('image')){
-//            $inputs['image'] = request('image')->store('document images');
-//            $inputs['document'] = request('document')->store('documents');
-//        }
-//
-//        $document = new Document();
-//        $document->name = $request->name;
-//        $document->description = $request->description;
-//        $document->course = $request->course;
-//        $document->image = $inputs['image'];
-//        $document->document = $inputs['document'];
-//
-//        $document->save();
-
         return back();
     }
+
+
 }

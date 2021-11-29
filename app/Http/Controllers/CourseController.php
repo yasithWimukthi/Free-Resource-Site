@@ -49,7 +49,6 @@ class CourseController extends Controller
                 $course->description = $data['description'];
                 $course->image = $inputs['image'];
                 $course->awarding_body_id = $data['awarding_body'];
-                //$data['image']->store('course images');
                 $course->save();
             }catch(Exception $e){
                 return redirect('/exam')->with('failed',"operation failed");
@@ -59,14 +58,6 @@ class CourseController extends Controller
         if(request('image')){
             $inputs['image'] = request('image')->store('course images');
         }
-
-//        $course = new Course();
-//        $course->name = $request->name;
-//        $course->description = $request->description;
-//        $course->awarding_body = $request->awarding_body;
-//        $course->image = $inputs['image'];
-//
-//        $course->save();
 
         return back();
     }
