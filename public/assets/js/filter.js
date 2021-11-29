@@ -97,6 +97,7 @@ $(document).ready(function() {
     });
 });
 
+
 function getCoursesByCourseId(id){
     $('.right-container').empty();
 
