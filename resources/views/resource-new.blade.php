@@ -29,7 +29,7 @@
                     <li class="nav-item">
                         <a class="btn btn-icon" href="#">
                             <i class="fa fa-heart"></i>
-                            <span class="notification-badge">1</span>
+                            <span class="notification-badge">icons</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -51,21 +51,21 @@
                             <a class="nav-link" href="#">Courses</a>
                         </li>
                         <li class="nav-item" style="margin-right: 20px; ">
-                            <a class="nav-link" href="#">Awarding bodies</a>
+                            <a class="nav-link" href="#" style="width: 150px;">Awarding bodies</a>
                         </li>
                         <li class="nav-item" style="margin-right: 20px">
-                            <a class="nav-link" href="#">Our products</a>
+                            <a class="nav-link" href="#" style="width: 120px;">Our products</a>
                         </li>
                         <li class="nav-item" style="margin-right: 20px">
                             <a class="nav-link" href="#">Freebies</a>
                         </li>
-                        <li class="nav-item" style="margin-right: 40px">
+                        <li class="nav-item" style="margin-right: 20px">
                             <a class="nav-link" href="#">Contact</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0" style="margin-right: 20px;width: 100px !important; ">
                         <li class="nav-item" style="width: auto">
-                            <a href="#" class="btn btn-outline-primary rounded-pill">Enquiry Now</a>
+                            <a href="#" class="btn btn-outline-primary rounded-pill" style="width: 150px;">Enquiry Now</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav notification-btns ms-auto mb-2 mb-lg-0 d-xl-flex d-none">
@@ -86,8 +86,7 @@
                         </li>
                     </ul>
                     <div class="d-flex loginDiv" style="margin-left: 100px">
-                        <a href="#" class="btn btn-link">Login</a>
-                        <a href="#" class="btn btn-info rounded-pill">REGISTER</a>
+                        <a href="#" class="btn btn-info rounded-pill" style="width: 100px">Log Out</a>
                     </div>
                 </div>
             </div>
@@ -148,8 +147,6 @@
 
         <!-- main area -->
         <div class="col-8">
-
-            <div class="card-deck-wrapper courses_cards">
                 <div class="d-flex flex-row flex-grow-1 right-container" style="height: inherrit; padding-left: 20px">
 {{--                                <div class="card" style="width: 300px; height: 350px; margin: 10px; border: 1px solid #ccc">--}}
 {{--                                    <img class="card-img-top" src="//placeimg.com/280/180/tech" alt="Card image cap">--}}
@@ -159,7 +156,7 @@
 {{--                                    </div>--}}
 {{--                                </div>--}}
                     @foreach($courses as $course)
-                        <div class="card" style="width: 300px; height: 350px; margin: 10px; border: 1px solid #ccc">
+                        <div class="card" style="width: 800px !important; height: 350px; margin: 10px; border: 1px solid #ccc">
                             <img class="card-img-top" src="storage/{{$course->image}}" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title border-bottom pb-3">{{$course->name}} <a href="#" class="float-right d-inline-flex share"><i class="fas fa-share-alt text-primary"></i></a></h5>
@@ -168,7 +165,6 @@
                         </div>
                     @endforeach
                 </div>
-            </div>
         </div>
     </div>
 </div>
