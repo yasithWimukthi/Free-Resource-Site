@@ -24,6 +24,10 @@ Route::get('/home', function () {
     return view('home');
 });
 
+//Route::get('/resource', function () {
+//    return view('resource-new');
+//});
+Route::get('/resource', [App\Http\Controllers\ResourceController::class, 'index'])->name('resource.index');
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
 Route::get('/awarding-body', [App\Http\Controllers\AwardingBodyController::class, 'index'])->name('awardingbody.index');
 Route::get('/exam', [App\Http\Controllers\ExamController::class, 'index'])->name('exam.index');
