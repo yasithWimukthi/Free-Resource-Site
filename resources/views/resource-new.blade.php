@@ -157,7 +157,7 @@
 {{--                                </div>--}}
                     @foreach($courses as $course)
                         <div class="card" style="width: 800px !important; height: 350px; margin: 10px; border: 1px solid #ccc">
-                            <img class="card-img-top" src="storage/{{$course->image}}" alt="Card image cap">
+                            <img class="card-img-top" src="/storage/{{$course->image}}" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title border-bottom pb-3">{{$course->name}} <a href="#" class="float-right d-inline-flex share"><i class="fas fa-share-alt text-primary"></i></a></h5>
                                 <button type="button" class="btn btn-primary">View Now</button>
