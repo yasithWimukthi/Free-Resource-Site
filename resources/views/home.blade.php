@@ -57,7 +57,7 @@
             <div class="modal-body">
                 <h1  style="margin: auto; text-align: center;">Welcome Back!</h1><br>
                 <p  style="margin: auto; text-align: center;">What will you learn today? Find out, with GEL</p><br><br>
-                <form action="user" method="POST">
+                <form action="{{route('login.api')}}" method="POST">
                     @csrf
                     <div class="form-group">
                         <input type="email" class="form-control"  name="email" id="InputEmail1" aria-describedby="emailHelp" placeholder="Email" style="width:75% ; margin: auto; ">
@@ -65,6 +65,11 @@
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control"  name="password" id="InputEmail1"  placeholder="Password" style="width:75%; margin: auto; ">
+                        <span style="color:red;"> @error('password'){{$message}} @enderror</span><br>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="hidden" class="form-control"  name="password_confirmation" id="InputEmail1" value="ye@123" placeholder="Password" style="width:75%; margin: auto; ">
                         <span style="color:red;"> @error('password'){{$message}} @enderror</span><br>
                     </div>
 

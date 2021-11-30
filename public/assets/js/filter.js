@@ -46,7 +46,7 @@ function getCoursesByAwardingId(id){
             } else {
                 response.forEach(element => {
                     $('.right-container').append(`<div class="card" style="width: 300px; height: 350px; margin: 10px; border: 1px solid #ccc">
-                <img class="card-img-top" src="storage/${element.image }" alt="Card image cap">
+                <img class="card-img-top" src="/storage/${element.image }" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title border-bottom pb-3">${element.name }  <a href="#" class="float-right d-inline-flex share"><i class="fas fa-share-alt text-primary"></i></a></h5>
                     <button type="button" class="btn btn-primary mx-auto">Start Now</button>
@@ -118,7 +118,7 @@ function getCoursesByCourseId(id){
             } else {
                 response.forEach(element => {
                     $('.right-container').append(`<div class="card" style="width: 300px; height: 350px; margin: 10px; border: 1px solid #ccc">
-                <img class="card-img-top" src="storage/${element.image }" alt="Card image cap">
+                <img class="card-img-top" src="/storage/${element.image }" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title border-bottom pb-3">${element.name }  <a href="#" class="float-right d-inline-flex share"><i class="fas fa-share-alt text-primary"></i></a></h5>
                     <button type="button" class="btn btn-primary">Start Now</button>
@@ -178,7 +178,7 @@ function getExamsByAwardingId(id){
             } else {
                 response.forEach(element => {
                     $('.right-container').append(`<div class="card" style="width: 300px; height: 350px; margin: 10px; border: 1px solid #ccc">
-                <img class="card-img-top" src="storage/${element.image }" alt="Card image cap">
+                <img class="card-img-top" src="/storage/${element.image }" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title border-bottom pb-3">${element.name }  <a href="#" class="float-right d-inline-flex share"><i class="fas fa-share-alt text-primary"></i></a></h5>
                     <button type="button" class="btn btn-primary">Start Now</button>
@@ -238,7 +238,7 @@ function getDocumentsByAwardingId(id){
             } else {
                 response.forEach(element => {
                     $('.right-container').append(`<div class="card" style="width: 300px; height: 350px; margin: 10px; border: 1px solid #ccc">
-                <img class="card-img-top" src="storage/${element.image }" alt="Card image cap">
+                <img class="card-img-top" src="/storage/${element.image }" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title border-bottom pb-3">${element.name }  <a href="#" class="float-right d-inline-flex share"><i class="fas fa-share-alt text-primary"></i></a></h5>
                     <a class="btn btn-primary" href="storage/${element.document}" target="_BLANK">View Now</a>
