@@ -10,8 +10,15 @@ use Illuminate\Support\Facades\Validator;
 class AwardingBodyController extends Controller
 {
 
-    public function index(){
+    public function index(Request $request){
+
         $awardingBodies = AwardingBody::all();
+        if($request->has('view_deleted')){
+            $awardingBodies = AwardingBody::onlyTrashed()->get();
+            return view('deleted-awarding-body',['awardingbodies'=>$awardingBodies]);
+        }
+
+        
         return view('awardingbody',['awardingbodies'=>$awardingBodies]);
     }
 
@@ -40,7 +47,8 @@ class AwardingBodyController extends Controller
             }
         }
 
-        return back();
+        $awardingBodies = AwardingBody::all();
+        return view('awardingbody',['awardingbodies'=>$awardingBodies]);
     }
 
     public function edit(Request $request,$id){
@@ -52,8 +60,26 @@ class AwardingBodyController extends Controller
     }
 
     public function remove($id){
-        DB::update('DELETE FROM awarding_bodies WHERE id= ?',[$id]);
+        //DB::update('DELETE FROM awarding_bodies WHERE id= ?',[$id]);
+        AwardingBody::find($id)->delete();
         $awardingBodies = AwardingBody::all();
         return view('awardingbody',['awardingbodies'=>$awardingBodies]);
     }
+
+    public function restore($id)
+    {
+        AwardingBody::withTrashed()->find($id)->restore();
+
+        $awardingBodies = AwardingBody::all();
+        return view('awardingbody',['awardingbodies'=>$awardingBodies]);
+    }
+
+    public function restoreAll()
+    {
+        AwardingBody::onlyTrashed()->restore();
+
+        $awardingBodies = AwardingBody::all();
+        return view('awardingbody',['awardingbodies'=>$awardingBodies]);
+    }
+
 }

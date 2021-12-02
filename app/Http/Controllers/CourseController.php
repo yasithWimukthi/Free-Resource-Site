@@ -15,9 +15,15 @@ use Symfony\Component\Console\Input\Input;
 class CourseController extends Controller
 {
 
-    public function index(){
+    public function index(Request $request){
         $course = Course::all();
         $awardingBody = AwardingBody::all();
+
+        if($request->has('view_deleted')){
+            $course = Course::onlyTrashed()->get();
+            return view('deleted-courses',['courses'=>$course,'awardingBodies' => $awardingBody]);
+        }
+
         return view('course',['courses'=>$course,'awardingBodies' => $awardingBody]);
     }
 
@@ -59,7 +65,9 @@ class CourseController extends Controller
             $inputs['image'] = request('image')->store('course images');
         }
 
-        return back();
+        $course = Course::all();
+        $awardingBody = AwardingBody::all();
+        return view('course',['courses'=>$course,'awardingBodies' => $awardingBody]);
     }
 
     function getCoursesByAwardingId(Request $request){
@@ -98,7 +106,27 @@ class CourseController extends Controller
     }
 
     public function remove($id){
-        DB::update('DELETE FROM courses WHERE id= ?',[$id]);
+        Course::find($id)->delete();
+        //DB::update('DELETE FROM courses WHERE id= ?',[$id]);
+        $course = Course::all();
+        $awardingBody = AwardingBody::all();
+        return view('course',['courses'=>$course,'awardingBodies' => $awardingBody]);
+    }
+
+    
+    public function restore($id)
+    {
+        Course::withTrashed()->find($id)->restore();
+
+        $course = Course::all();
+        $awardingBody = AwardingBody::all();
+        return view('course',['courses'=>$course,'awardingBodies' => $awardingBody]);
+    }
+
+    public function restoreAll()
+    {
+        Course::onlyTrashed()->restore();
+
         $course = Course::all();
         $awardingBody = AwardingBody::all();
         return view('course',['courses'=>$course,'awardingBodies' => $awardingBody]);

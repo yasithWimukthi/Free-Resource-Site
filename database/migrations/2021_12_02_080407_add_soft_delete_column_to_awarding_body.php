@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateUserTableToIncludeLastName extends Migration
+class AddSoftDeleteColumnToAwardingBody extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class UpdateUserTableToIncludeLastName extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropIfExists('type');
-            $table->integer('type')->default(0);
+        Schema::table('awarding_bodies', function (Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
@@ -26,8 +25,8 @@ class UpdateUserTableToIncludeLastName extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
+        Schema::table('awarding_body', function (Blueprint $table) {
+            $table->dropSoftDeletes();
         });
     }
 }

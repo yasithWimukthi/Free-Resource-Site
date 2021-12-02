@@ -4,13 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class AwardingBody extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
     protected $table = 'awarding_bodies';
     public $timestamps = true;
     protected $guarded = [];
+    protected $dates = ['deleted_at'];
 
     public function courses()
     {

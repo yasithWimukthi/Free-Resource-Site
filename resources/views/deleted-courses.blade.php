@@ -4,11 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Documents</title>
+    <title>Courses</title>
     <link rel="stylesheet" href=" {{asset('assets/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href=" {{asset('assets/fonts/fontawesome-all.min.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 </head>
 
 <body id="page-top">
@@ -138,29 +139,29 @@
             </nav>
             <div class="container-fluid">
 
-                <!-- <button type="button" class="btn btn-primary btn-lg" style="float: right; margin-bottom: 20px" data-bs-toggle="modal" data-bs-target="#addDocumentModal">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add Document
+                <!-- <button type="button" class="btn btn-primary btn-lg" style="float: right; margin-bottom: 20px" data-bs-toggle="modal" data-bs-target="#addCourseModal">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add Course
                 </button> -->
 
                 <!-- Modal -->
-                <div class="modal fade" id="addDocumentModal" tabindex="-1" aria-labelledby="addAwardingBodyModalLabel" aria-hidden="true" >
+                <div class="modal fade" id="addCourseModal" tabindex="-1" aria-labelledby="addAwardingBodyModalLabel" aria-hidden="true" >
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Add Document</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Add Awarding Body</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                {{--                        add document form--}}
-                                <form method="post" action="{{route('document.store')}}" enctype="multipart/form-data">
+                                {{--                        add course form--}}
+                                <form method="post" action="{{route('course.store')}}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label for="name">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter document name">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter course name">
                                     </div>
                                     <div class="form-group">
-                                        <label for="description">Document Description</label>
-                                        <textarea class="form-control" id="description" name="description" placeholder="Enter document description"rows="3"></textarea>
+                                        <label for="description">Course description</label>
+                                        <textarea class="form-control" id="description" name="description" placeholder="Enter course description"rows="3"></textarea>
                                     </div>
 
                                     <select class="custom-select custom-select-lg mb-3" name="awarding_body">
@@ -174,13 +175,7 @@
                                         <input type="file" class="custom-file-input" name="image" id="image">
                                         <label class="custom-file-label" for="image">Choose image</label>
                                     </div>
-
-                                    <div class="custom-file mb-3">
-                                        <input type="file" class="custom-file-input" name="document" id="document">
-                                        <label class="custom-file-label" for="document">Choose Document</label>
-                                    </div>
-
-                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Add Document</button>
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Add Course</button>
                                 </form>
                             </div>
                             {{--                            <div class="modal-footer">--}}
@@ -191,15 +186,16 @@
                     </div>
                 </div>
             </div>
-            <div class="container-fluid" style="clear: both;">
+
+            <div class="container-fluid" style="clear: both">
                 <div class="card shadow">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Exams List
-                        <button type="button" class="btn btn-primary btn-md" style="float:right; margin-bottom: 20px" data-bs-toggle="modal" data-bs-target="#addDocumentModal">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add Document
+                        <p class="text-primary m-0 font-weight-bold">Courses List
+                        <button type="button" class="btn btn-primary btn-md" style="float:right; margin-bottom: 20px" data-bs-toggle="modal" data-bs-target="#addCourseModal">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add Course
                         </button>
-                        <a type="button" class="btn btn-danger btn-md" style="float:right; margin-bottom: 20px;margin-right:10px;" href="{{route('document.index',['view_deleted'=>'Deleted Records'])}}">
-                              View Deleted Data
+                        <a type="button" class="btn btn-danger btn-md" style="float:right; margin-bottom: 20px" href="{{ route('course.restoreAll') }}">
+                              Restore All
                         </a>
                         </p>
                     </div>
@@ -219,40 +215,21 @@
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Awarding Body</th>
-                                    <th>Update</th>
-                                    <th>Delete</th>
+                                    <th>Restore</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($documents as $document)
+                                @foreach($courses as $course)
                                     <tr>
-                                        <td> <img class="rounded-circle mr-2" width="30" height="30" src="/storage/{{$document->image}}">{{$document->name}}</td>
-                                        <td>{{$document->description}}</td>
-                                        <td>{{$document->awardingBody->name}} </td>
-                                        <td><button
+                                        <td> <img class="rounded-circle mr-2" width="30" height="30" src="/storage/{{$course->image}}">{{$course->name}}</td>
+                                        <td>{{$course->description}}</td>
+                                        <td>{{$course->awardingBody->name}} </td>
+                                        <td><a
                                             type="button"
                                             class="btn btn-success"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#updateModal"
-                                            data-bs-name="{{$document->name}}"
-                                            data-bs-description="{{$document->description}}"
-                                            data-bs-id="{{$document->id}}"
-                                            data-bs-image="{{$document->image}}"
-                                            data-bs-awarding="{{$document->awardingBody->id}}"
-                                            data-bs-document="{{$document->document}}"
-                                            >
-                                            Update
-                                        </button></td>
-                                    <td><button
-                                            type="button"
-                                            class="btn btn-danger"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#deleteModal"
-                                            data-bs-name="{{$document->name}}"
-                                            data-bs-description="{{$document->description}}"
-                                            data-bs-id="{{$document->id}}">
-                                            Delete
-                                        </button></td>
+                                            href="{{ route('course.restore', $course->id) }}">
+                                            Restore
+                                        </a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -261,8 +238,7 @@
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Awarding Body</th>
-                                    <th>Update</th>
-                                    <th>Delete</th>
+                                    <th>Restore</th>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -288,83 +264,6 @@
             </div>
         </div>
 
-        {{--        update modal--}}
-        <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Update Course</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="post" id="update-form">
-                            @csrf
-                            <div class="form-group">
-                                <label for="update-name">Name</label>
-                                <input type="text" class="form-control" id="update-name" name="name" placeholder="Enter course name">
-                            </div>
-                            <div class="form-group">
-                                <label for="update-description">Course description</label>
-                                <textarea class="form-control" id="update-description" name="description" rows="3"></textarea>
-                            </div>
-
-                            <select class="custom-select custom-select-lg mb-3" id="updateAwardingBody" name="updateAwardingBody">
-                                <option >Select Awarding Body</option>
-                                @foreach($awardingBodies as $awardingBody)
-                                <option class="option" value="{{$awardingBody->id}}">{{$awardingBody->name}}</option>
-                                @endforeach
-                            </select>
-
-                            <image src="" id="updateImage" style="width:300px; height:200px;margin-left:80px;"></image>
-
-                            <div class="custom-file mb-3" style="margin-top:10px">
-                                <input type="file" class="custom-file-input" name="updateImage" id="updateImage">
-                                <label class="custom-file-label" for="image">Choose image</label>
-                            </div>
-
-                            <div class="custom-file mb-3">
-                                        <input type="file" class="custom-file-input" name="document" id="updateDocument">
-                                        <label class="custom-file-label" for="document">Choose Document</label>
-                            </div>
-
-                            <input type="hidden" class="form-control" id="previous-image" name="pimage" placeholder="Enter course name">
-                            <input type="hidden" class="form-control" id="previous-document" name="pdoc" placeholder="Enter course name">
-                            <input type="hidden" class="form-control" id="update-id" name="id" placeholder="Enter course name">
-                           <button type="submit" class="btn btn-primary btn-lg btn-block">Update Course</button>
-                        </form>
-                    </div>
-                    <!-- <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Update</button>
-                    </div> -->
-                </div>
-            </div>
-        </div>
-
-        {{--        delete modal--}}
-
-        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Dou you want to delete ?</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p id="delete-modal-body"></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <a href="" id="delete-modal-delete-btn"><button type="button"  class="btn btn-danger" >Delete</button></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
         <footer class="bg-white sticky-footer">
             <div class="container my-auto">
                 <div class="text-center my-auto copyright"><span>Copyright © Brand 2021</span></div>
@@ -372,7 +271,7 @@
         </footer>
     </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
 
-<script src=" {{asset('assets/js/document.js')}}"></script>
+<script src=" {{asset('assets/js/course.js')}}"></script>
 <script src=" {{asset('assets/js/jquery.min.js')}}"></script>
 <script src=" {{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src=" {{asset('assets/js/chart.min.js')}}"></script>

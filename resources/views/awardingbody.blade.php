@@ -181,6 +181,10 @@
                         <button type="button" class="btn btn-primary btn-md" style="float:right; margin-bottom: 20px" data-bs-toggle="modal" data-bs-target="#addAwardingBodyModal">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add Awarding body
                         </button>
+
+                        <a type="button" class="btn btn-danger btn-md" style="float:right; margin-bottom: 20px; margin-right:10px;" href="{{route('awardingbody.index',['view_deleted'=>'Deleted Records'])}}">
+                              View Deleted Data
+                        </a>
                         </p>
                     </div>
                     <div class="card-body">
@@ -198,8 +202,8 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Description</th>
-                                    <th>Update</th>
-                                    <th>Delete</th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -234,8 +238,8 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Description</th>
-                                    <th>Update</th>
-                                    <th>Delete</th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                                 </tfoot>
                             </table>

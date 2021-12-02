@@ -12,9 +12,15 @@ use Illuminate\Support\Facades\Validator;
 class DocumentController extends Controller
 {
 
-    public function index(){
+    public function index(Request $request){
         $documents = Document::all();
         $awardingBody = AwardingBody::all();
+
+        if($request->has('view_deleted')){
+            $documents = Document::onlyTrashed()->get();
+            return view('deleted-document',['documents'=>$documents,'awardingBodies' => $awardingBody]);
+        }
+
         return view('document',['documents'=>$documents,'awardingBodies' => $awardingBody]);
     }
 
@@ -59,7 +65,9 @@ class DocumentController extends Controller
             }
         }
 
-        return back();
+        $documents = Document::all();
+        $awardingBody = AwardingBody::all();
+        return view('document',['documents'=>$documents,'awardingBodies' => $awardingBody]);
     }
 
     function getDocumentByAwardingId(Request $request){
@@ -106,7 +114,26 @@ class DocumentController extends Controller
     }
 
     public function remove($id){
-        DB::update('DELETE FROM documents WHERE id= ?',[$id]);
+        Document::find($id)->delete();
+        // DB::update('DELETE FROM documents WHERE id= ?',[$id]);
+        $documents = Document::all();
+        $awardingBody = AwardingBody::all();
+        return view('document',['documents'=>$documents,'awardingBodies' => $awardingBody]);
+    }
+
+    public function restore($id)
+    {
+        Document::withTrashed()->find($id)->restore();
+
+        $documents = Document::all();
+        $awardingBody = AwardingBody::all();
+        return view('document',['documents'=>$documents,'awardingBodies' => $awardingBody]);
+    }
+
+    public function restoreAll()
+    {
+        Document::onlyTrashed()->restore();
+
         $documents = Document::all();
         $awardingBody = AwardingBody::all();
         return view('document',['documents'=>$documents,'awardingBodies' => $awardingBody]);
