@@ -182,8 +182,8 @@
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add Awarding body
                         </button>
 
-                        <a type="button" class="btn btn-danger btn-md" style="float:right; margin-bottom: 20px" href="{{route('awardingbody.index',['view_deleted'=>'Deleted Records'])}}">
-                              View Deleted Data
+                        <a type="button" class="btn btn-danger btn-md" style="float:right; margin-bottom: 20px" href="{{ route('awardingbody.restoreAll'') }}">
+                              Restore All
                         </a>
                         </p>
                     </div>
@@ -202,8 +202,7 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Description</th>
-                                    <th></th>
-                                    <th></th>
+                                    <th>Restore</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -211,26 +210,11 @@
                                 <tr>
                                     <td>{{$awardingBody->name}}</td>
                                     <td>{{$awardingBody->description}}</td>
-                                    <td><button
+                                    <td><a href="{{ route('awardingbody.restore', $awardingBody->id) }}"
                                             type="button"
-                                            class="btn btn-success"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#updateModal"
-                                            data-bs-name="{{$awardingBody->name}}"
-                                            data-bs-description="{{$awardingBody->description}}"
-                                            data-bs-id="{{$awardingBody->id}}">
-                                            Update
-                                        </button></td>
-                                    <td><button
-                                            type="button"
-                                            class="btn btn-danger"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#deleteModal"
-                                            data-bs-name="{{$awardingBody->name}}"
-                                            data-bs-description="{{$awardingBody->description}}"
-                                            data-bs-id="{{$awardingBody->id}}">
-                                            Delete
-                                        </button></td>
+                                            class="btn btn-success">
+                                            Restore
+                                        </a></td>
                                 </tr>
                                 @endforeach
                                 </tbody>
@@ -238,8 +222,7 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Description</th>
-                                    <th></th>
-                                    <th></th>
+                                    <th>Restore</th>
                                 </tr>
                                 </tfoot>
                             </table>

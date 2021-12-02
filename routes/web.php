@@ -56,6 +56,8 @@ Route::post('/admin/document', [App\Http\Controllers\DocumentController::class, 
 Route::post('/admin/awarding-body', [App\Http\Controllers\AwardingBodyController::class, 'store'])->name('awardingbody.store');
 Route::post('/admin/awarding-body/update/{id}', [App\Http\Controllers\AwardingBodyController::class, 'edit'])->name('awardingbody.edit');
 Route::get('/admin/awarding-body/delete/{id}', [App\Http\Controllers\AwardingBodyController::class, 'remove'])->name('awardingbody.remove');
+Route::get('/admin/awarding-body/restore/{id}', [App\Http\Controllers\AwardingBodyController::class, 'restore'])->name('awardingbody.restore');
+Route::get('/admin/awarding-body/restoreAll', [App\Http\Controllers\AwardingBodyController::class, 'restoreAll'])->name('awardingbody.restoreAll');
 
 Route::post('/admin/course', [App\Http\Controllers\CourseController::class, 'store'])->name('course.store');
 Route::post('/admin/course/update/{id}', [App\Http\Controllers\CourseController::class, 'edit'])->name('course.edit');
