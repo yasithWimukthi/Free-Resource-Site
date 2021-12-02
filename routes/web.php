@@ -29,7 +29,7 @@ Route::get('/home', function () {
 //});
 
 //
-//Route::get('/resource', [App\Http\Controllers\ResourceController::class, 'index'])->name('resource.index');
+Route::get('/resource', [App\Http\Controllers\ResourceController::class, 'index'])->name('resource.index');
 
 
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
