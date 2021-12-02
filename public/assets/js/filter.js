@@ -5,8 +5,6 @@
 
 $(document).ready(function() {
     $(document).on('change', '.awarding-body-check-box', function () {
-        $( ".exam-check-box" ).prop( "checked", false );
-        $( ".document-check-box" ).prop( "checked", false );
         var awardingBodyIds = [];
 
         $('.awarding-body-check-box').each(function () {
@@ -78,8 +76,6 @@ function getCoursesByAwardingId(id){
 $(document).ready(function() {
     $(document).on('change', '.course-check-box', function () {
 
-        $( ".exam-check-box" ).prop( "checked", false );
-        $( ".document-check-box" ).prop( "checked", false );
 
         var courseIds = [];
 
@@ -137,8 +133,6 @@ function getCoursesByCourseId(id){
  */
 $(document).ready(function() {
     $(document).on('change', '.exam-check-box', function () {
-        $( ".document-check-box" ).prop( "checked", false );
-        $( ".course-check-box" ).prop( "checked", false );
 
         var awardingBodies = [];
 
