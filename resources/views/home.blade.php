@@ -69,7 +69,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="hidden" class="form-control"  name="password_confirmation" id="InputEmail1" value="ye@123" placeholder="Password" style="width:75%; margin: auto; ">
+                        <input type="hidden" class="form-control"  name="password_confirmation" id="InputEmail1" value="123456" placeholder="Password" style="width:75%; margin: auto; ">
                         <span style="color:red;"> @error('password'){{$message}} @enderror</span><br>
                     </div>
 
@@ -94,17 +94,17 @@
             <div class="modal-body">
                 <h1  style="margin: auto; text-align: center;">Sign Up for free</h1><br>
                 <p  style="margin: auto; text-align: center;">Join the World's Largest Free Learning Community</p><br><br>
-                <form action="signup" method="POST">
+                <form action="{{route('register.api')}}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <input type="text" name="firstName" placeholder="First Name" class="form-control"  style="width:75%; margin: auto; "><br>
+                        <input type="text" name="name" placeholder="Name" class="form-control"  style="width:75%; margin: auto; "><br>
                         <span style="color:red;"> @error('firstName'){{$message}} @enderror</span>
                     </div>
 
-                    <div class="form-group">
-                        <input type="text" name="lastName" placeholder="Last Name" class="form-control"  style="width:75%; margin: auto; "><br>
-                        <span style="color:red;"> @error('lastName'){{$message}} @enderror</span>
-                    </div>
+{{--                    <div class="form-group">--}}
+{{--                        <input type="text" name="lastName" placeholder="Last Name" class="form-control"  style="width:75%; margin: auto; "><br>--}}
+{{--                        <span style="color:red;"> @error('lastName'){{$message}} @enderror</span>--}}
+{{--                    </div>--}}
 
                     <div class="form-group">
                         <input type="text" name="email" placeholder="Email" class="form-control"  style="width:75%; margin: auto; "><br>
@@ -114,6 +114,16 @@
                     <div class="form-group">
                         <input type="password" name="password" placeholder="Password" class="form-control"  style="width:75%; margin: auto; "><br>
                         <span style="color:red;"> @error('password'){{$message}} @enderror</span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control"  name="password_confirmation" id="input-confirm-password" value="ye@123" placeholder="Password" style="width:75%; margin: auto; ">
+                        <span style="color:red;"> @error('password'){{$message}} @enderror</span><br>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="hidden" class="form-control"  name="type" id="input-type" value="0" placeholder="Password" style="width:75%; margin: auto; ">
+                        <span style="color:red;"> @error('password'){{$message}} @enderror</span><br>
                     </div>
 
                     <div  style="margin: auto; text-align: center;">

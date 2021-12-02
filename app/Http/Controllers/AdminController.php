@@ -9,6 +9,11 @@ use App\Models\Exam;
 
 class AdminController extends Controller
 {
+
+    // public function __construct(){
+    //     $this->middleware('admin');
+    // }
+
     public function index(){
         $course = Course::all()->count();
         $awardingBody = AwardingBody::all()->count();

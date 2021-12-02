@@ -30,7 +30,12 @@ Route::get('/home', function () {
 
 //
 //Route::get('/resource', [App\Http\Controllers\ResourceController::class, 'index'])->name('resource.index');
+
+
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
+
+// Route::get('/admin',['middleware' => 'admin', function (){}],[App\Http\Controllers\AdminController::class, 'index']);
+
 Route::get('/awarding-body', [App\Http\Controllers\AwardingBodyController::class, 'index'])->name('awardingbody.index');
 Route::get('/exam', [App\Http\Controllers\ExamController::class, 'index'])->name('exam.index');
 
@@ -47,6 +52,8 @@ Route::post('/admin/awarding-body/update/{id}', [App\Http\Controllers\AwardingBo
 Route::get('/admin/awarding-body/delete/{id}', [App\Http\Controllers\AwardingBodyController::class, 'remove'])->name('awardingbody.remove');
 
 Route::post('/admin/course', [App\Http\Controllers\CourseController::class, 'store'])->name('course.store');
+Route::post('/admin/course/update/{id}', [App\Http\Controllers\CourseController::class, 'edit'])->name('course.edit');
+Route::get('/admin/course/delete/{id}', [App\Http\Controllers\CourseController::class, 'remove'])->name('course.remove');
 
 Route::get('/getCourses', [App\Http\Controllers\CourseController::class, 'getCoursesByAwardingId']);
 Route::get('/getCoursesById', [App\Http\Controllers\CourseController::class, 'getCoursesById']);
