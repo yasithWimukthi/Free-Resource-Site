@@ -4,12 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Awarding Body</title>
+    <title>Exams</title>
     <link rel="stylesheet" href=" {{asset('assets/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href=" {{asset('assets/fonts/fontawesome-all.min.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
 </head>
 
 <body id="page-top">
@@ -138,12 +137,13 @@
                 </div>
             </nav>
             <div class="container-fluid">
-                <!-- <button type="button" class="btn btn-primary btn-lg" style="float: right; margin-bottom: 20px" data-bs-toggle="modal" data-bs-target="#addAwardingBodyModal">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add Awarding body
+
+                <!-- <button type="button" class="btn btn-primary btn-lg" style="float: right; margin-bottom: 20px" data-bs-toggle="modal" data-bs-target="#addExamModal">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add Exam
                 </button> -->
 
                 <!-- Modal -->
-                <div class="modal fade" id="addAwardingBodyModal" tabindex="-1" aria-labelledby="addAwardingBodyModalLabel" aria-hidden="true" >
+                <div class="modal fade" id="addExamModal" tabindex="-1" aria-labelledby="addAwardingBodyModalLabel" aria-hidden="true" >
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -151,38 +151,48 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form method="post" action="{{route('awardingbody.store')}}">
+                                {{--                        add exam form--}}
+                                <form method="post" action="{{route('exam.store')}}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label for="name">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter exam name">
                                     </div>
                                     <div class="form-group">
-                                        <label for="description">Awarding Body Description</label>
-                                        <textarea class="form-control" id="description" name="description" placeholder="Enter Description" rows="3"></textarea>
+                                        <label for="description">Exam description</label>
+                                        <textarea class="form-control" id="description" name="description" placeholder="Enter exam description" rows="3"></textarea>
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-lg btn-block"> Add Awarding Body </button>
 
+                                    <select class="custom-select custom-select-lg mb-3" name="awarding_body">
+                                        <option selected>Select Awarding Body</option>
+                                        @foreach($awardingBodies as $awardingBody)
+                                            <option value="{{$awardingBody->id}}">{{$awardingBody->name}}</option>
+                                        @endforeach
+                                    </select>
+
+                                    <div class="custom-file mb-3">
+                                        <input type="file" class="custom-file-input" name="image" id="image">
+                                        <label class="custom-file-label" for="image">Choose image</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Add Exam</button>
                                 </form>
                             </div>
-{{--                            <div class="modal-footer">--}}
-{{--                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>--}}
-{{--                                <button type="button" class="btn btn-primary">Save changes</button>--}}
-{{--                            </div>--}}
+                            {{--                            <div class="modal-footer">--}}
+                            {{--                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>--}}
+                            {{--                                <button type="button" class="btn btn-primary">Save changes</button>--}}
+                            {{--                            </div>--}}
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="container-fluid" style="clear: both; ">
+            <div class="container-fluid" style="clear: both;">
                 <div class="card shadow">
-                    <div class="card-header py-3" style="">
-                        <p class="text-primary m-0 font-weight-bold">Awarding Body List
-                        <button type="button" class="btn btn-primary btn-md" style="float:right; margin-bottom: 20px" data-bs-toggle="modal" data-bs-target="#addAwardingBodyModal">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add Awarding body
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 font-weight-bold">Exams List
+                        <button type="button" class="btn btn-primary btn-md" style="float:right; margin-bottom: 20px" data-bs-toggle="modal" data-bs-target="#addExamModal">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add Exam
                         </button>
-
-                        <a type="button" class="btn btn-danger btn-md" style="float:right; margin-bottom: 20px" href="{{ route('awardingbody.restoreAll') }}">
+                        <a type="button" class="btn btn-danger btn-md" style="float:right; margin-bottom: 20px" href="{{ route('exam.restoreAll') }}">
                               Restore All
                         </a>
                         </p>
@@ -202,27 +212,29 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Description</th>
+                                    <th>Awarding Body</th>
                                     <th>Restore</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($awardingbodies as $awardingBody)
-                                <tr>
-                                    <td>{{$awardingBody->name}}</td>
-                                    <td>{{$awardingBody->description}}</td>
-                                    <td><a
+                                @foreach($exams as $exam)
+                                    <tr>
+                                        <td> <img class="rounded-circle mr-2" width="30" height="30" src="/storage/{{$exam->image}}">{{$exam->name}}</td>
+                                        <td>{{$exam->description}}</td>
+                                        <td>{{$exam->awardingBody->name}} </td>
+                                        <td><a
                                             type="button"
                                             class="btn btn-success"
-                                            href="{{ route('awardingbody.restore', $awardingBody->id) }}">
+                                            href="{{ route('exam.restore', $exam->id) }}">
                                             Restore
                                         </a></td>
-                                </tr>
                                 @endforeach
                                 </tbody>
                                 <tfoot>
                                 <tr>
                                     <th>Name</th>
                                     <th>Description</th>
+                                    <th>warding Body</th>
                                     <th>Restore</th>
                                 </tr>
                                 </tfoot>
@@ -249,9 +261,14 @@
             </div>
         </div>
 
+        <footer class="bg-white sticky-footer">
+            <div class="container my-auto">
+                <div class="text-center my-auto copyright"><span>Copyright © Brand 2021</span></div>
+            </div>
+        </footer>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
 
-
-<script src=" {{asset('assets/js/awarding-body.js')}}"></script>
+<script src=" {{asset('assets/js/exam.js')}}"></script>
 <script src=" {{asset('assets/js/jquery.min.js')}}"></script>
 <script src=" {{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src=" {{asset('assets/js/chart.min.js')}}"></script>

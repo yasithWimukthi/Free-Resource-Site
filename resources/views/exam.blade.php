@@ -189,9 +189,12 @@
                 <div class="card shadow">
                     <div class="card-header py-3">
                         <p class="text-primary m-0 font-weight-bold">Exams List
-                        <button type="button" class="btn btn-primary btn-md" style="float:right; margin-bottom: 20px" data-bs-toggle="modal" data-bs-target="#addAwardingBodyModal">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add Awarding body
+                        <button type="button" class="btn btn-primary btn-md" style="float:right; margin-bottom: 20px" data-bs-toggle="modal" data-bs-target="#addExamModal">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add Exam
                         </button>
+                        <a type="button" class="btn btn-danger btn-md" style="float:right; margin-bottom: 20px" href="{{route('exam.index',['view_deleted'=>'Deleted Records'])}}">
+                              View Deleted Data
+                        </a>
                         </p>
                     </div>
                     <div class="card-body">

@@ -11,9 +11,15 @@ use Illuminate\Support\Facades\Validator;
 class ExamController extends Controller
 {
 
-    public function index(){
+    public function index(Request $request){
         $exams = Exam::all();
         $awardingBody = AwardingBody::all();
+
+        if($request->has('view_deleted')){
+            $exams = Exam::onlyTrashed()->get();
+            return view('deleted-exams',['exams'=>$exams,'awardingBodies' => $awardingBody]);
+        }
+
         return view('exam',['exams'=>$exams,'awardingBodies' => $awardingBody]);
     }
 
@@ -55,7 +61,9 @@ class ExamController extends Controller
             $inputs['image'] = request('image')->store('course images');
         }
 
-        return back();
+        $exams = Exam::all();
+        $awardingBody = AwardingBody::all();
+        return view('exam',['exams'=>$exams,'awardingBodies' => $awardingBody]);
     }
 
     function getExamByAwardingId(Request $request){
@@ -86,9 +94,27 @@ class ExamController extends Controller
     }
 
     public function remove($id){
-        DB::update('DELETE FROM exams WHERE id= ?',[$id]);
+        Exam::find($id)->delete();
         $exams = Exam::all();
         $awardingBody = AwardingBody::all();
+        return view('exam',['exams'=>$exams,'awardingBodies' => $awardingBody]);
+    }
+
+    public function restore($id)
+    {
+        Exam::withTrashed()->find($id)->restore();
+
+        $exams = Exam::all();
+        $awardingBody = AwardingBody::all();
+        return view('exam',['exams'=>$exams,'awardingBodies' => $awardingBody]);
+    }
+
+    public function restoreAll()
+    {
+        Exam::onlyTrashed()->restore();
+
+        $exams = Exam::all();
+        $awardingBody = Exam::all();
         return view('exam',['exams'=>$exams,'awardingBodies' => $awardingBody]);
     }
 }
