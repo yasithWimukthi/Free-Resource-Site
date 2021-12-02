@@ -84,7 +84,7 @@ class CourseController extends Controller
         $image = "";
 
         if($request->input('image')){
-            $image = $request->input('updateImage');
+            $image = $request->input('document');
         }else{
             $image = $request->input('pimage');
         }

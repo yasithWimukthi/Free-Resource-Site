@@ -139,9 +139,9 @@
             </nav>
             <div class="container-fluid">
 
-                <button type="button" class="btn btn-primary btn-lg" style="float: right; margin-bottom: 20px" data-bs-toggle="modal" data-bs-target="#addCourseModal">
+                <!-- <button type="button" class="btn btn-primary btn-lg" style="float: right; margin-bottom: 20px" data-bs-toggle="modal" data-bs-target="#addCourseModal">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add Course
-                </button>
+                </button> -->
 
                 <!-- Modal -->
                 <div class="modal fade" id="addCourseModal" tabindex="-1" aria-labelledby="addAwardingBodyModalLabel" aria-hidden="true" >
@@ -190,7 +190,11 @@
             <div class="container-fluid" style="clear: both">
                 <div class="card shadow">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Courses List</p>
+                        <p class="text-primary m-0 font-weight-bold">Courses List
+                        <button type="button" class="btn btn-primary btn-md" style="float:right; margin-bottom: 20px" data-bs-toggle="modal" data-bs-target="#addAwardingBodyModal">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add Awarding body
+                        </button>
+                        </p>
                     </div>
                     <div class="card-body">
                         <div class="row">

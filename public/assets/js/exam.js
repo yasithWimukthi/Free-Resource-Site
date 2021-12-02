@@ -28,7 +28,7 @@ updateModal.addEventListener('show.bs.modal',event =>{
     })
 
     console.log(awarding)
-    updateForm.setAttribute('action',`/admin/course/update/${id}`);
+    updateForm.setAttribute('action',`/admin/exam/update/${id}`);
     updateImage.setAttribute('src',`/storage/${image}`)
 
     nameInput.value = name;
@@ -45,6 +45,6 @@ deleteModal.addEventListener('show.bs.modal',event =>{
     let description = deleteBtn.getAttribute('data-bs-description');
     let id = deleteBtn.getAttribute('data-bs-id');
 
-    deleteModalDeleteBtn.setAttribute('href',`/admin/course/delete/${id}`)
+    deleteModalDeleteBtn.setAttribute('href',`/admin/exam/delete/${id}`)
     document.querySelector('#delete-modal-body').innerText = `Do you want to delete ${name} course?`;
 })
