@@ -42,9 +42,15 @@ Route::get('/exam', [App\Http\Controllers\ExamController::class, 'index'])->name
 
 Route::get('/course', [App\Http\Controllers\CourseController::class, 'index'])->name('course.index');
 Route::get('/document', [App\Http\Controllers\DocumentController::class, 'index'])->name('document.index');
+Route::post('/admin/document/update/{id}', [App\Http\Controllers\DocumentController::class, 'edit'])->name('document.edit');
+Route::get('/admin/document/delete/{id}', [App\Http\Controllers\DocumentController::class, 'remove'])->name('document.remove');
 
 
 Route::post('/admin/exam', [App\Http\Controllers\ExamController::class, 'store'])->name('exam.store');
+Route::post('/admin/exam/update/{id}', [App\Http\Controllers\ExamController::class, 'edit'])->name('exam.edit');
+Route::get('/admin/exam/delete/{id}', [App\Http\Controllers\ExamController::class, 'remove'])->name('exam.remove');
+
+
 Route::post('/admin/document', [App\Http\Controllers\DocumentController::class, 'store'])->name('document.store');
 
 Route::post('/admin/awarding-body', [App\Http\Controllers\AwardingBodyController::class, 'store'])->name('awardingbody.store');

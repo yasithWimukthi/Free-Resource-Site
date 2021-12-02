@@ -69,8 +69,15 @@ class ExamController extends Controller
     public function edit(Request $request,$id){
         $name = $request->input('name');
         $description = $request->input('description');
-        $image = $request->input('image');
-        $awardingBodyId = $request->input('awardingBodyId');
+        $image = "";
+
+        if($request->input('image')){
+            $image = $request->input('updateImage');
+        }else{
+            $image = $request->input('pimage');
+        }
+
+        $awardingBodyId = $request->input('updateAwardingBody');
         DB::update('update exams set name = ?, description = ?, image = ?, awarding_body_id = ? where id = ?',[$name,$description,$image,$awardingBodyId,$id]);
         
         $exams = Exam::all();

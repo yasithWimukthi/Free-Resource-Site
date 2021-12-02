@@ -3,6 +3,7 @@ const nameInput = document.querySelector('#update-name');
 const descriptionInput = document.querySelector('#update-description');
 const awardingBodyInput = document.querySelector('#updateAwardingBody');
 const previousImageInput = document.querySelector('#previous-image');
+const previousDocumentInput = document.querySelector('#previous-document');
 const imageInput = document.querySelector('#updateImage');
 const updateModal = document.querySelector('#updateModal');
 const deleteModal = document.querySelector('#deleteModal');
@@ -18,8 +19,8 @@ updateModal.addEventListener('show.bs.modal',event =>{
     let image = updateBtn.getAttribute('data-bs-image');
     let awarding = updateBtn.getAttribute('data-bs-awarding');
     let id = updateBtn.getAttribute('data-bs-id');
+    let doc = updateBtn.getAttribute('data-bs-document');
 
-    // console.log([...options]);
 
     [...options].forEach(option => {
         if(option.value == awarding){
@@ -28,13 +29,13 @@ updateModal.addEventListener('show.bs.modal',event =>{
     })
 
     console.log(awarding)
-    updateForm.setAttribute('action',`/admin/course/update/${id}`);
+    updateForm.setAttribute('action',`/admin/document/update/${id}`);
     updateImage.setAttribute('src',`/storage/${image}`)
 
     nameInput.value = name;
     descriptionInput.value = description;
     previousImageInput.value = image;
-    // awardingBodyInput.value =awarding;
+    previousDocumentInput.value = doc;
     idInput.value = id;
 })
 
@@ -45,6 +46,6 @@ deleteModal.addEventListener('show.bs.modal',event =>{
     let description = deleteBtn.getAttribute('data-bs-description');
     let id = deleteBtn.getAttribute('data-bs-id');
 
-    deleteModalDeleteBtn.setAttribute('href',`/admin/course/delete/${id}`)
-    document.querySelector('#delete-modal-body').innerText = `Do you want to delete ${name} course?`;
+    deleteModalDeleteBtn.setAttribute('href',`/admin/document/delete/${id}`)
+    document.querySelector('#delete-modal-body').innerText = `Do you want to delete ${name} document?`;
 })

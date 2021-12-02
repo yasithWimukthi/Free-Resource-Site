@@ -79,6 +79,27 @@ class DocumentController extends Controller
         $document = $request->input('document');
         DB::update('update documents set name = ?, description = ?, image = ?, awarding_body_id = ?, document = ? where id = ?',[$name,$description,$image,$awardingBodyId,$document,$id]);
         
+        $image = "";
+        $document = "";
+
+        if($request->input('image')){
+            $image = $request->input('updateImage');
+        }else{
+            $image = $request->input('pimage');
+        }
+
+        if($request->input('image')){
+            $document = $request->input('updateImage');
+        }else{
+            $document = $request->input('pdoc');
+        }
+
+        if($request->input('image')){
+            $image = $request->input('updateImage');
+        }else{
+            $image = $request->input('pimage');
+        }
+
         $documents = Document::all();
         $awardingBody = AwardingBody::all();
         return view('document',['documents'=>$documents,'awardingBodies' => $awardingBody]);
