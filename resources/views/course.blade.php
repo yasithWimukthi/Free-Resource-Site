@@ -148,7 +148,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Add Awarding Body</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Add Course</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -194,7 +194,7 @@
                         <button type="button" class="btn btn-primary btn-md" style="float:right; margin-bottom: 20px" data-bs-toggle="modal" data-bs-target="#addCourseModal">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add Course
                         </button>
-                        <a type="button" class="btn btn-danger btn-md" style="float:right; margin-bottom: 20px" href="{{route('course.index',['view_deleted'=>'Deleted Records'])}}">
+                        <a type="button" class="btn btn-danger btn-md" style="float:right; margin-bottom: 20px;margin-right:10px;" href="{{route('course.index',['view_deleted'=>'Deleted Records'])}}">
                               View Deleted Data
                         </a>
                         </p>

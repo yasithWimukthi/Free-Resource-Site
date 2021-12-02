@@ -44,6 +44,8 @@ Route::get('/course', [App\Http\Controllers\CourseController::class, 'index'])->
 Route::get('/document', [App\Http\Controllers\DocumentController::class, 'index'])->name('document.index');
 Route::post('/admin/document/update/{id}', [App\Http\Controllers\DocumentController::class, 'edit'])->name('document.edit');
 Route::get('/admin/document/delete/{id}', [App\Http\Controllers\DocumentController::class, 'remove'])->name('document.remove');
+Route::get('/admin/document/restore/{id}', [App\Http\Controllers\DocumentController::class, 'restore'])->name('document.restore');
+Route::get('/admin/document/restoreAll', [App\Http\Controllers\DocumentController::class, 'restoreAll'])->name('document.restoreAll');
 
 
 Route::post('/admin/exam', [App\Http\Controllers\ExamController::class, 'store'])->name('exam.store');

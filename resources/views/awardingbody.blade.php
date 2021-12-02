@@ -182,7 +182,7 @@
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add Awarding body
                         </button>
 
-                        <a type="button" class="btn btn-danger btn-md" style="float:right; margin-bottom: 20px" href="{{route('awardingbody.index',['view_deleted'=>'Deleted Records'])}}">
+                        <a type="button" class="btn btn-danger btn-md" style="float:right; margin-bottom: 20px; margin-right:10px;" href="{{route('awardingbody.index',['view_deleted'=>'Deleted Records'])}}">
                               View Deleted Data
                         </a>
                         </p>
