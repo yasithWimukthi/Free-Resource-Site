@@ -77,4 +77,30 @@ class CourseController extends Controller
         echo json_encode($data);
         exit;
     }
+
+    public function edit(Request $request,$id){
+        $name = $request->input('name');
+        $description = $request->input('description');
+        $image = "";
+
+        if($request->input('image')){
+            $image = $request->input('updateImage');
+        }else{
+            $image = $request->input('pimage');
+        }
+
+        $awardingBodyId = $request->input('updateAwardingBody');
+        DB::update('update courses set name = ?, description = ?, image = ?, awarding_body_id = ? where id = ?',[$name,$description,$image,$awardingBodyId,$id]);
+        
+        $course = Course::all();
+        $awardingBody = AwardingBody::all();
+        return view('course',['courses'=>$course,'awardingBodies' => $awardingBody]);
+    }
+
+    public function remove($id){
+        DB::update('DELETE FROM courses WHERE id= ?',[$id]);
+        $course = Course::all();
+        $awardingBody = AwardingBody::all();
+        return view('course',['courses'=>$course,'awardingBodies' => $awardingBody]);
+    }
 }

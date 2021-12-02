@@ -70,5 +70,26 @@ class DocumentController extends Controller
         exit;
     }
 
+    
+    public function edit(Request $request,$id){
+        $name = $request->input('name');
+        $description = $request->input('description');
+        $image = $request->input('image');
+        $awardingBodyId = $request->input('awardingBodyId');
+        $document = $request->input('document');
+        DB::update('update documents set name = ?, description = ?, image = ?, awarding_body_id = ?, document = ? where id = ?',[$name,$description,$image,$awardingBodyId,$document,$id]);
+        
+        $documents = Document::all();
+        $awardingBody = AwardingBody::all();
+        return view('document',['documents'=>$documents,'awardingBodies' => $awardingBody]);
+    }
+
+    public function remove($id){
+        DB::update('DELETE FROM documents WHERE id= ?',[$id]);
+        $documents = Document::all();
+        $awardingBody = AwardingBody::all();
+        return view('document',['documents'=>$documents,'awardingBodies' => $awardingBody]);
+    }
+
 
 }

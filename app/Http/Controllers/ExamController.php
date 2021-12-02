@@ -65,4 +65,23 @@ class ExamController extends Controller
         echo json_encode($data);
         exit;
     }
+
+    public function edit(Request $request,$id){
+        $name = $request->input('name');
+        $description = $request->input('description');
+        $image = $request->input('image');
+        $awardingBodyId = $request->input('awardingBodyId');
+        DB::update('update exams set name = ?, description = ?, image = ?, awarding_body_id = ? where id = ?',[$name,$description,$image,$awardingBodyId,$id]);
+        
+        $exams = Exam::all();
+        $awardingBody = AwardingBody::all();
+        return view('exam',['exams'=>$exams,'awardingBodies' => $awardingBody]);
+    }
+
+    public function remove($id){
+        DB::update('DELETE FROM exams WHERE id= ?',[$id]);
+        $exams = Exam::all();
+        $awardingBody = AwardingBody::all();
+        return view('exam',['exams'=>$exams,'awardingBodies' => $awardingBody]);
+    }
 }

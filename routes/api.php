@@ -29,10 +29,10 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/resource', 'App\Http\Controllers\ResourceController@index')->name('resource');
 });
 
-Route::middleware(['middleware' => ['auth:api', 'api.admin']])->group(function () {
-    Route::post('/logout', 'Auth\ApiAuthController@logout')->name('logout.api');
-    Route::get('/resource', 'App\Http\Controllers\ResourceController@index')->name('resource');
-});
+//Route::middleware(['middleware' => ['auth:api', 'api.admin']])->group(function () {
+//    Route::post('/logout', 'Auth\ApiAuthController@logout')->name('logout.api');
+//    Route::get('/resource', 'App\Http\Controllers\ResourceController@index')->name('resource');
+//});
 
 
 

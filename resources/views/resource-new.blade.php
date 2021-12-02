@@ -72,18 +72,18 @@
                         <li class="nav-item">
                             <a class="btn btn-icon" href="#"><i class="fa fa-search"></i></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="btn btn-icon" href="#">
-                                <i class="fa fa-heart"></i>
-                                <span class="notification-badge">icons</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-icon" href="#">
-                                <i class="fa fa-shopping-basket"></i>
-                                <span class="notification-badge d-none">icons</span>
-                            </a>
-                        </li>
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="btn btn-icon" href="#">--}}
+{{--                                <i class="fa fa-heart"></i>--}}
+{{--                                <span class="notification-badge">icons</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="btn btn-icon" href="#">--}}
+{{--                                <i class="fa fa-shopping-basket"></i>--}}
+{{--                                <span class="notification-badge d-none">icons</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
                     </ul>
                     <div class="d-flex loginDiv" style="margin-left: 100px">
                         <a href="#" class="btn btn-info rounded-pill" style="width: 100px">Log Out</a>
@@ -116,10 +116,10 @@
 
             <h4>Courses</h4>
             <form action="#" class="courses container course-container">
-                <p>Awarding body not selected</p>
+                <p></p>
             </form>
 
-            <h4>Resource Type</h4>
+            <h4 >Resource Type</h4>
             <div class="container">
                 <div class="form-check custom-control custom-checkbox mb-3">
                     <input
