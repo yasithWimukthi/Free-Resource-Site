@@ -62,6 +62,8 @@ Route::get('/admin/awarding-body/restoreAll', [App\Http\Controllers\AwardingBody
 Route::post('/admin/course', [App\Http\Controllers\CourseController::class, 'store'])->name('course.store');
 Route::post('/admin/course/update/{id}', [App\Http\Controllers\CourseController::class, 'edit'])->name('course.edit');
 Route::get('/admin/course/delete/{id}', [App\Http\Controllers\CourseController::class, 'remove'])->name('course.remove');
+Route::get('/admin/course/restore/{id}', [App\Http\Controllers\CourseController::class, 'restore'])->name('course.restore');
+Route::get('/admin/course/restoreAll', [App\Http\Controllers\CourseController::class, 'restoreAll'])->name('course.restoreAll');
 
 Route::get('/getCourses', [App\Http\Controllers\CourseController::class, 'getCoursesByAwardingId']);
 Route::get('/getCoursesById', [App\Http\Controllers\CourseController::class, 'getCoursesById']);

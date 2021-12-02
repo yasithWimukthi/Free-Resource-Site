@@ -182,7 +182,7 @@
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add Awarding body
                         </button>
 
-                        <a type="button" class="btn btn-danger btn-md" style="float:right; margin-bottom: 20px" href="{{ route('awardingbody.restoreAll'') }}">
+                        <a type="button" class="btn btn-danger btn-md" style="float:right; margin-bottom: 20px" href="{{ route('awardingbody.restoreAll') }}">
                               Restore All
                         </a>
                         </p>
@@ -210,10 +210,11 @@
                                 <tr>
                                     <td>{{$awardingBody->name}}</td>
                                     <td>{{$awardingBody->description}}</td>
-                                    <td><a href="{{ route('awardingbody.restore', $awardingBody->id) }}"
+                                    <td><a
                                             type="button"
-                                            class="btn btn-success">
-                                            Restore
+                                            class="btn btn-success"
+                                            href="{{ route('awardingbody.restore', $awardingBody->id) }}">
+                                            Update
                                         </a></td>
                                 </tr>
                                 @endforeach
@@ -248,68 +249,7 @@
             </div>
         </div>
 
-{{--        update modal--}}
-        <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Update Course</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="post" action="/admin/awarding-body/update/1" id="update-form">
-                            @csrf
-                            <div class="form-group">
-                                <label for="update-id">Awarding Body Id</label>
-                                <input type="text" class="form-control" id="update-id" name="id" disabled>
-                            </div>
-                            <div class="form-group">
-                                <label for="update-name">Name</label>
-                                <input type="text" class="form-control" id="update-name" name="name" placeholder="Enter name">
-                            </div>
-                            <div class="form-group">
-                                <label for="update-description">Awarding Body Description</label>
-                                <textarea class="form-control" id="update-description" name="description" rows="3"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">Update Awarding Body</button>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-{{--                        <button type="button" class="btn btn-primary">Update</button>--}}
-                    </div>
-                </div>
-            </div>
-        </div>
 
-{{--        delete awarding body modal--}}
-
-        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Dou you want to delete ?</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p id="delete-modal-body"></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <a href="" id="delete-modal-delete-btn"><button type="button"  class="btn btn-danger" >Delete</button></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <footer class="bg-white sticky-footer">
-            <div class="container my-auto">
-                <div class="text-center my-auto copyright"><span>Copyright © Brand 2021</span></div>
-            </div>
-        </footer>
-    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
 
 <script src=" {{asset('assets/js/awarding-body.js')}}"></script>
 <script src=" {{asset('assets/js/jquery.min.js')}}"></script>
