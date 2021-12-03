@@ -69,7 +69,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="hidden" class="form-control"  name="password_confirmation" id="InputEmail1" value="123456" placeholder="Password" style="width:75%; margin: auto; ">
+                        <input type="password" class="form-control"  name="password_confirmation" id="InputEmail1" placeholder="Password" style="width:75%; margin: auto; ">
                         <span style="color:red;"> @error('password'){{$message}} @enderror</span><br>
                     </div>
 
@@ -117,7 +117,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="password" class="form-control"  name="password_confirmation" id="input-confirm-password" value="ye@123" placeholder="Password" style="width:75%; margin: auto; ">
+                        <input type="password" class="form-control"  name="password_confirmation" id="input-confirm-password"  placeholder="Password" style="width:75%; margin: auto; ">
                         <span style="color:red;"> @error('password'){{$message}} @enderror</span><br>
                     </div>
 

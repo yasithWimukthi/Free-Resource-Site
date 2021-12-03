@@ -72,4 +72,5 @@ Route::get('/admin/course/restoreAll', [App\Http\Controllers\CourseController::c
 Route::get('/getCourses', [App\Http\Controllers\CourseController::class, 'getCoursesByAwardingId']);
 Route::get('/getCoursesById', [App\Http\Controllers\CourseController::class, 'getCoursesById']);
 Route::get('/getExams', [App\Http\Controllers\ExamController::class, 'getExamByAwardingId']);
+Route::get('/getAllExams', [App\Http\Controllers\ExamController::class, 'getAllExams']);
 Route::get('/getDocuments', [App\Http\Controllers\DocumentController::class, 'getDocumentByAwardingId']);

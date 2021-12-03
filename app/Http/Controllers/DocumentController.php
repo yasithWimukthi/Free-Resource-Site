@@ -78,7 +78,16 @@ class DocumentController extends Controller
         exit;
     }
 
-    
+    function getAllDocuments(){
+        function getAllExams(){
+            $input = $request->all();
+            \Log::info($input);
+            $data = Document::all();
+            echo json_encode($data);
+            exit;
+        }
+    }
+
     public function edit(Request $request,$id){
         $name = $request->input('name');
         $description = $request->input('description');

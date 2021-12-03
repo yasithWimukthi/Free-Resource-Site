@@ -219,6 +219,7 @@
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Awarding Body</th>
+                                    <th>Download</th>
                                     <th>Update</th>
                                     <th>Delete</th>
                                 </tr>
@@ -229,6 +230,9 @@
                                         <td> <img class="rounded-circle mr-2" width="30" height="30" src="/storage/{{$document->image}}">{{$document->name}}</td>
                                         <td>{{$document->description}}</td>
                                         <td>{{$document->awardingBody->name}} </td>
+                                        <td>
+                                            <a class="btn btn-success" href="/storage/{{$document->document}}">Download</a>
+                                        </td>
                                         <td><button
                                             type="button"
                                             class="btn btn-success"
@@ -261,6 +265,7 @@
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Awarding Body</th>
+                                    <th>Download</th>
                                     <th>Update</th>
                                     <th>Delete</th>
                                 </tr>
