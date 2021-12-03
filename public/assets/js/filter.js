@@ -20,6 +20,17 @@ $(document).ready(function() {
             }
         });
 
+
+        if($('#exam-check-box').is(":checked")){
+            getExamsByAwardingId(awardingBodyIds);
+        }
+
+        if($('#document-check-box').is(":checked")){
+            getDocumentsByAwardingId(awardingBodyIds);
+        }
+
+
+
         console.log(awardingBodyIds)
         getCoursesByAwardingId(awardingBodyIds)
     });
@@ -29,7 +40,6 @@ $(document).ready(function() {
 function getCoursesByAwardingId(id){
 
     $('.right-container').empty();
-    $('.course-container').empty();
 
     $.ajax({
         type: 'GET',
@@ -150,6 +160,9 @@ $(document).ready(function() {
             }
         });
 
+        if($('#document-check-box').is(":checked")){
+            getDocumentsByAwardingId(awardingBodyIds);
+        }
         getExamsByAwardingId(awardingBodies);
 
     });
@@ -159,9 +172,17 @@ function getExamsByAwardingId(id){
 
     $('.right-container').empty();
 
+    $url = "";
+
+    if(id.length === 0 ){
+        $url = "/getAllExams";
+    }else{
+        $url = "getExams";
+    }
+
     $.ajax({
         type: 'GET',
-        url: '/getExams',
+        url: $url,
         data:{id:id},
         success: function (response) {
             var response = JSON.parse(response);
@@ -192,9 +213,6 @@ function getExamsByAwardingId(id){
 $(document).ready(function() {
     $(document).on('change', '.document-check-box', function () {
 
-        $( ".exam-check-box" ).prop( "checked", false );
-        $( ".course-check-box" ).prop( "checked", false );
-
         var awardingBodies = [];
 
         $('.awarding-body-check-box').each(function () {
@@ -210,6 +228,9 @@ $(document).ready(function() {
             }
         });
 
+        if($('#exam-check-box').is(":checked")){
+            getExamsByAwardingId(awardingBodyIds);
+        }
         getDocumentsByAwardingId(awardingBodies);
 
     });
@@ -217,7 +238,6 @@ $(document).ready(function() {
 
 function getDocumentsByAwardingId(id){
 
-    $('.right-container').empty();
 
     $.ajax({
         type: 'GET',
@@ -244,4 +264,3 @@ function getDocumentsByAwardingId(id){
         }
     });
 }
-

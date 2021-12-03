@@ -70,6 +70,13 @@ class ExamController extends Controller
         $input = $request->all();
         \Log::info($input);
         $data = DB::table('exams')->whereIn('awarding_body_id',$input['id'])->get();
+        $data = Exam::all();
+        echo json_encode($data);
+        exit;
+    }
+
+    function getAllExams(){
+        $data = Exam::all();
         echo json_encode($data);
         exit;
     }

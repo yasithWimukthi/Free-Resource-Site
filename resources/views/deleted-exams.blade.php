@@ -192,7 +192,7 @@
                         <button type="button" class="btn btn-primary btn-md" style="float:right; margin-bottom: 20px" data-bs-toggle="modal" data-bs-target="#addExamModal">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add Exam
                         </button>
-                        <a type="button" class="btn btn-danger btn-md" style="float:right; margin-bottom: 20px" href="{{ route('exam.restoreAll') }}">
+                        <a type="button" class="btn btn-danger btn-md" style="float:right; margin-bottom: 20px;margin-right:10px;" href="{{ route('exam.restoreAll') }}">
                               Restore All
                         </a>
                         </p>

@@ -147,16 +147,9 @@
 
         <!-- main area -->
         <!-- <div class="col-8"> -->
-                <div class=" col-8 right-container " style="height: 1000px; width=900px; padding-left: 20px; display:flex;">
-{{--                                <div class="card" style="width: 350px !important; height: 200px; margin: 10px; border: 1px solid #ccc">--}}
-{{--                                    <img class="card-img-top" src="//placeimg.com/280/180/tech" alt="Card image cap">--}}
-{{--                                    <div class="card-body">--}}
-{{--                                        <h5 class="card-title border-bottom pb-3">Card title <a href="#" class="float-right d-inline-flex share"><i class="fas fa-share-alt text-primary"></i></a></h5>--}}
-{{--                                        <button type="button" class="btn btn-primary">View Now</button>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
+                <div class=" col-9 right-container" style="width:1000px; display:flex; flex-direction:row;flex-wrap: wrap;align-content: flex-start;">
                     @foreach($courses as $course)
-                        <div class="card" style="width: 300px !important; height: 150px; margin: 10px; border: 1px solid #ccc">
+                        <div class="card" style="width: 300px; height: 350px; margin:20px; border: 1px solid #ccc">
                             <img class="card-img-top" src="/storage/{{$course->image}}" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title border-bottom pb-3">{{$course->name}} <a href="#" class="float-right d-inline-flex share"><i class="fas fa-share-alt text-primary"></i></a></h5>
@@ -166,7 +159,7 @@
                     @endforeach
 
                     @foreach($exams as $exam)
-                        <div class="card" style="width: 300px !important; height: 150px; margin: 10px; border: 1px solid #ccc">
+                        <div class="card" style="width: 300px; height: 350px; margin:20px; border: 1px solid #ccc">
                             <img class="card-img-top" src="/storage/{{$exam->image}}" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title border-bottom pb-3">{{$exam->name}} <a href="#" class="float-right d-inline-flex share"><i class="fas fa-share-alt text-primary"></i></a></h5>
@@ -176,7 +169,7 @@
                     @endforeach
 
                     @foreach($documents as $document)
-                        <div class="card" style="width: 300px !important; height: 150px; margin: 10px; border: 1px solid #ccc">
+                        <div class="card" style="width: 300px; height: 350px; margin:20px; border: 1px solid #ccc">
                             <img class="card-img-top" src="/storage/{{$document->image}}" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title border-bottom pb-3">{{$document->name}} <a href="#" class="float-right d-inline-flex share"><i class="fas fa-share-alt text-primary"></i></a></h5>
@@ -194,5 +187,4 @@
 
 <script src="{{ asset('assets/js/filter.js') }}"></script>
 </body>
-
 
